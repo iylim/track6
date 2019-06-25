@@ -33,3 +33,40 @@ For more detailed notes, look in the corresponding folder for each week.
 - DATA
 - Atomic design
 - room to extend
+
+## Global Resources
+
+- [Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)
+- [Front-End Developer Handbook 2018](https://frontendmasters.com/books/front-end-handbook/2018/)
+- [w3schools](https://www.w3schools.com/)
+- [MDN web docs](https://developer.mozilla.org/en-US/)
+- [Odin Project](https://www.theodinproject.com/)
+- [JavaScript.info](https://javascript.info/): The Modern Javascript Tutorial
+- [hackr.io](https://hackr.io/)
+- [State of JavaScript](https://stateofjs.com/)
+- Wes Bos
+  - [CSS Grid](https://cssgrid.io/)
+  - [JavaScript 30](https://javascript30.com/)
+  - [What the Flexbox](https://flexbox.io/)
+  - [Command Line Power User](https://commandlinepoweruser.com/)
+- Podcasts
+  - [Syntax](https://syntax.fm/)
+  - [ShopTalk](https://shoptalkshow.com/)
+  - [99 Percent Invisible](https://99percentinvisible.org/)
+- YouTube
+  - [Level Up Tuts](https://www.youtube.com/channel/UCyU5wkjgQYGRB0hIHMwm2Sg)
+- Blogs
+  - [Refactoring UI](https://refactoringui.com/)
+  - [Dev Tips](https://umaar.com/dev-tips/)
+  - [CSS Tricks](https://css-tricks.com/)
+- Forums
+  - [Stack Overflow](https://stackoverflow.com/)
+  - [Hacker News](https://news.ycombinator.com/news)
+- Fun & Inspirational
+  - [Codepen](https://codepen.io/)
+  - [Dribble](https://dribbble.com/)
+- Coding practice
+  - [LeetCode](https://leetcode.com/)
+  - [HackerRank](https://www.hackerrank.com/dashboard)
+  - [Frontloops](https://frontloops.io/): HTML/CSS challenges sent via email
+  - [Daily CSS Images](http://dailycssimages.com/)

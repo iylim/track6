@@ -29,46 +29,9 @@ Your cohort also has its own chat in `trainee-chat` if you ever want to discuss 
 
 #### What do we want to learn about?
 
-### Machine Setup
+### Tooling Setup
 
-For development there are a few tools that you need.
-There are many different version of a lot of these tools,
-but I recommend that every one downloads the same ones so that we can all be on the same page.
-Of course, if you have your own preferences then go ahead and use those (I just might not be able to help as easily if you run into an issue).
-
-Install the following:
-
-- [Visual Studio Code](https://code.visualstudio.com/): editor
-- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git): source control management
-- [GitKraken](https://www.gitkraken.com/): git client
-
-You will also need to make a [GitHub](https://github.com/) account if you do not have one already.
-
-#### VS Code
-
-This is your code editor, where you will be doing most of your work.
-VS Code is an open source editor made by Microsoft
-
-The following extensions are required:
-
-- [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome): lets us run debug sessions in VS Code from Chrome
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): allows us to lint or JavaScript, showing style and syntax errors
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): code formatter
-- [Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest): automatically runs and monitors your Jest tests
-- [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): Launch a local development server with live reload feature for static & dynamic pages.
-
-The following extensions are some of my favorites (optional):
-
-- [Popping and Locking Theme](https://marketplace.visualstudio.com/items?itemName=hedinne.popping-and-locking-vscode): the best theme
-- [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer): allows matching brackets to be identified with colours
-- [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv): syntax highlighting for `.ENV` files
-- [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens): adds a bunch of Git goodies to your editor
-- [LintLens](https://marketplace.visualstudio.com/items?itemName=ghmcadams.lintlens): context for your ESLint file
-- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one): All you need for Markdown (keyboard shortcuts, table of contents, auto preview and more)
-- [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced): provides you with many useful functionalities such as automatic scroll sync, math typesetting, mermaid, PlantUML, pandoc, PDF export, code chunk, presentation writer
-- [npm Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense): autocompletes npm modules in import statements
-- [open in browser](https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser): opens current HTML file in browser
-- [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight): highlights your TODOs
+Follow the instructions in the [tooling-config](https://github.com/talent-path-la/tooling-config) repo to get all of the goodies you'll need for development.
 
 ### The Command Line
 
