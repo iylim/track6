@@ -38,7 +38,81 @@ After reading, discuss the following with your neighbors:
 
 #### What have we used before?
 
+- Frontend
+  - HTML
+    - Pug
+  - CSS
+    - Bootstrap
+    - Flexbox, grid
+    - Sass
+  - JavaScript
+    - TypeScript
+  - React
+  - Angular
+- Backend
+  - C#, .NET
+  - SQL
+    - MySQL
+    - Postgres
+  - MongoDB
+  - MariaDB
+  - Node
+    - Express
+- General language
+  - Swift
+  - Java
+  - C++
+  - Python
+  - PHP
+- Tools
+  - CLI
+  - Github
+  - Bitbucket/Source Tree
+  - TFS
+  - Docker
+  - Xcode
+  - Visual Studio
+  - Eclipse
+  - Postman, ARC
+  - Mocha, Chai
+  - CLion
+  - Editors:
+    - Sublime
+    - VS Code
+- Developer soft skills
+  - Googling
+  - Teamwork, collaboration, pair programming
+  - OOP
+  - FP
+  - debugging
+  - commenting, documentation
+  - whiteboarding/interviewing
+  - reading, writing
+  - research, design, architecting
+  - empathy
+  - code reviews
+
 #### What do we want to learn about?
+
+- algorithms, data structures
+- testing
+- integrations
+  - FTP
+  - API
+- All of the JS libraries
+- Webpack, gulp
+- Cloud
+  - AWS
+- Server config
+  - Apache, nginx
+- whiteboarding
+- web sockets
+- giving and receiving feedback
+- Agile
+  - user stories
+- accesability
+- UX
+- misc QoL tools
 
 ### Tooling Setup
 
@@ -87,7 +161,7 @@ All `code` related commands are due to VS Code related setup involving installat
 
 ### Git
 
-![Git workflow](https://appendtonew.wpengine.com/wp-content/uploads/2015/06/Screen-Shot-2015-06-24-at-8.37.13-PM-1024x663.png)
+![Git workflow](https://user-images.githubusercontent.com/17076638/59949721-d7b3d380-9428-11e9-982f-0213ea3cb5c7.png)
 
 #### Code-along
 
@@ -115,6 +189,21 @@ Wipe the code from drive
 6. Push
 7. Create pull request
 8. Merge and close
+
+![GitKraken 1](https://user-images.githubusercontent.com/17076638/59958101-33e11c80-9456-11e9-9450-116ce81622b5.png)
+![GitKraken 2](https://user-images.githubusercontent.com/17076638/59958102-33e11c80-9456-11e9-9dc2-928a6f2c429d.png)
+![GitKraken 3](https://user-images.githubusercontent.com/17076638/59958103-33e11c80-9456-11e9-97e7-d0b8495f31de.png)
+![GitKraken 4](https://user-images.githubusercontent.com/17076638/59958104-33e11c80-9456-11e9-9cad-d0cc55d27d12.png)
+![GitKraken 5](https://user-images.githubusercontent.com/17076638/59958106-33e11c80-9456-11e9-8edb-29c7b4b90e51.png)
+![GitKraken 6](https://user-images.githubusercontent.com/17076638/59958107-3479b300-9456-11e9-950d-dba8d35f3cd1.png)
+![GitKraken 7](https://user-images.githubusercontent.com/17076638/59958108-3479b300-9456-11e9-86ff-01557d34a77e.png)
+![GitKraken 8](https://user-images.githubusercontent.com/17076638/59958109-3479b300-9456-11e9-850f-8ffbead0a52b.png)
+![GitKraken 9](https://user-images.githubusercontent.com/17076638/59958110-3479b300-9456-11e9-9b9c-96094a091270.png)
+![GitKraken 10](https://user-images.githubusercontent.com/17076638/59958111-3479b300-9456-11e9-85a2-1631a5a0ca5a.png)
+![GitKraken 11](https://user-images.githubusercontent.com/17076638/59958112-35124980-9456-11e9-931f-9e51bb2b8c0f.png)
+![GitKraken 12](https://user-images.githubusercontent.com/17076638/59958113-35124980-9456-11e9-907f-3ade243e56ba.png)
+![GitKraken 13](https://user-images.githubusercontent.com/17076638/59958115-35124980-9456-11e9-8202-b0cfaa4d6a4f.png)
+![GitKraken 14](https://user-images.githubusercontent.com/17076638/59958116-35124980-9456-11e9-975d-361f4715ebbc.png)
 
 #### Skills Check Exercise
 
