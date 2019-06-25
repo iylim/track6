@@ -181,28 +181,42 @@ Wipe the code from drive
 
 **Now let's do it with GitKraken**
 
-1. clone repo via GitKraken (demonstrate how to do this on command line)
-2. Make a new branch (or `git checkout -b <branch-name>`
-3. Make an edit
-4. Add
-5. Commit
-6. Push
-7. Create pull request
-8. Merge and close
-
+Clone repo via GitKraken (demonstrate how to do this on command line)
 ![GitKraken 1](https://user-images.githubusercontent.com/17076638/59958101-33e11c80-9456-11e9-9450-116ce81622b5.png)
-![GitKraken 2](https://user-images.githubusercontent.com/17076638/59958102-33e11c80-9456-11e9-9dc2-928a6f2c429d.png)
-![GitKraken 3](https://user-images.githubusercontent.com/17076638/59958103-33e11c80-9456-11e9-97e7-d0b8495f31de.png)
-![GitKraken 4](https://user-images.githubusercontent.com/17076638/59958104-33e11c80-9456-11e9-9cad-d0cc55d27d12.png)
+
+- Hit the clone button
+- Copy the url from the repository you are cloning
+- Clone it to a folder on your computer
+  ![GitKraken 2](https://user-images.githubusercontent.com/17076638/59958102-33e11c80-9456-11e9-9dc2-928a6f2c429d.png)
+
+- Open the Repo
+  ![GitKraken 3](https://user-images.githubusercontent.com/17076638/59958103-33e11c80-9456-11e9-97e7-d0b8495f31de.png)
+
+- View the magic
+  ![GitKraken 4](https://user-images.githubusercontent.com/17076638/59958104-33e11c80-9456-11e9-9cad-d0cc55d27d12.png)
+
+Make a new branch (or `git checkout -b <branch-name>`
 ![GitKraken 5](https://user-images.githubusercontent.com/17076638/59958106-33e11c80-9456-11e9-8edb-29c7b4b90e51.png)
+
+Make an edit
 ![GitKraken 6](https://user-images.githubusercontent.com/17076638/59958107-3479b300-9456-11e9-950d-dba8d35f3cd1.png)
+
+Add and commit
 ![GitKraken 7](https://user-images.githubusercontent.com/17076638/59958108-3479b300-9456-11e9-86ff-01557d34a77e.png)
+
+Push
 ![GitKraken 8](https://user-images.githubusercontent.com/17076638/59958109-3479b300-9456-11e9-850f-8ffbead0a52b.png)
 ![GitKraken 9](https://user-images.githubusercontent.com/17076638/59958110-3479b300-9456-11e9-9b9c-96094a091270.png)
+
+Create pull request (On GitHub)
 ![GitKraken 10](https://user-images.githubusercontent.com/17076638/59958111-3479b300-9456-11e9-85a2-1631a5a0ca5a.png)
 ![GitKraken 11](https://user-images.githubusercontent.com/17076638/59958112-35124980-9456-11e9-931f-9e51bb2b8c0f.png)
+
+Create pull request (On GitKraken)
 ![GitKraken 12](https://user-images.githubusercontent.com/17076638/59958113-35124980-9456-11e9-907f-3ade243e56ba.png)
 ![GitKraken 13](https://user-images.githubusercontent.com/17076638/59958115-35124980-9456-11e9-8202-b0cfaa4d6a4f.png)
+
+Merge and close
 ![GitKraken 14](https://user-images.githubusercontent.com/17076638/59958116-35124980-9456-11e9-975d-361f4715ebbc.png)
 
 #### Skills Check Exercise
