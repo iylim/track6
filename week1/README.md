@@ -23,6 +23,17 @@ Once you get in, you will notice that there are a bunch of channels, including:
 
 Your cohort also has its own chat in `trainee-chat` if you ever want to discuss things with just Track 6 folks.
 
+### Current Events
+
+Read Tania Rascia's [Everything I Know as a Software Developer Without a Degree](https://www.taniarascia.com/everything-i-know-as-a-software-developer-without-a-degree/)
+
+After reading, discuss the following with your neighbors:
+
+- Do you see any similarities between your journey and Tania's?
+- She started her journey a couple of years before you all, how do you think the landscape has changed?
+- What would you do differently?
+- Does this give you any ideas of new things you would like to learn?
+
 ### Tech Overview
 
 #### What have we used before?
