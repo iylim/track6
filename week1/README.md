@@ -70,7 +70,46 @@ The following extensions are some of my favorites (optional):
 - [open in browser](https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser): opens current HTML file in browser
 - [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight): highlights your TODOs
 
-### The Command Line
+### The Command Line: Basics
+
+[Basic Command Sheet](https://skillcrush.com/wp-content/uploads/2016/04/1a-TerminalCommandsCheatsheetMac.pdf)
+
+#### Navigation
+
+- `ls`: (List Segments) Shows all of the contents within your current searching directory.
+- `cd <directory>`: (Change Directory) Changes from your current directory to the one provided in the `<directory>` argument.
+  - Directories can be relative or absolute.
+  - If no directory is provided, then you go back to your default directory.
+  - If `..` is provided, then you move up one parent directory
+
+#### File Management
+
+- `pwd`: (Print working directory) Prints the working directory (absolute path) that you are currently in.
+
+#### Process
+
+- `ctrl + c`: Kill current process. If you are running a process that must be stopped for the following reasons:
+  - runs indefinitely and must be stopped manually
+  - crashes and cannot restart
+  - just needs to be murked
+
+#### NPM
+
+- `npm help`: Lots of lovely helpful hints on how to use npm.
+- `npm init`: Start an npm module (creates a package.json)
+- `npm run <command>`: Executes a script in your package.json `scripts` section where `<command>` is the name of your script
+
+#### VS Code
+
+All `code` related commands are due to VS Code related setup involving installation onto your machine. If you have a windows, you might need to go some extra steps to get this command set up properly.
+
+- `code <directory> / <file>`: Opens VS Code with that folder / file
+- `code -r .`: Reloads your current directory's window.
+
+### Command Line: Cheat Sheets
+
+- [Mac / Linux](http://cheatsheetworld.com/programming/unix-linux-cheat-sheet/)
+- [Windows Powershell](https://bytescout.com/blog/windows-command-prompt-commands.html)
 
 ### Git
 
