@@ -181,7 +181,7 @@ Wipe the code from drive
 
 **Now let's do it with GitKraken**
 
-Clone repo via GitKraken (demonstrate how to do this on command line)
+Clone repo via GitKraken
 ![GitKraken 1](https://user-images.githubusercontent.com/17076638/59958101-33e11c80-9456-11e9-9450-116ce81622b5.png)
 
 - Hit the clone button
@@ -195,7 +195,7 @@ Clone repo via GitKraken (demonstrate how to do this on command line)
 - View the magic
   ![GitKraken 4](https://user-images.githubusercontent.com/17076638/59958104-33e11c80-9456-11e9-9cad-d0cc55d27d12.png)
 
-Make a new branch (or `git checkout -b <branch-name>`
+Make a new branch
 ![GitKraken 5](https://user-images.githubusercontent.com/17076638/59958106-33e11c80-9456-11e9-8edb-29c7b4b90e51.png)
 
 Make an edit
