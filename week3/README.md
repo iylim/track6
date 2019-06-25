@@ -1,5 +1,42 @@
 # Week 3: JavaScript
 
+- Values, Types, and Operators
+- Program Structure
+- Functions
+  - callbacks
+  - arrow functions
+  - closures
+- Class
+  - **constructors**
+  - prototypes
+- Strings
+  - template literals
+  - advanced objects: Map, Set
+- Arrays
+- Objects
+  - OOP
+  - protoypes and inheritance
+- Higher-order Functions
+- The Secret Life of Objects
+- Bugs and Errors
+  - try, catch
+- ES6 goodies
+  - spread, rest
+  - arrow functions
+  - destructuring
+  - let, const, var
+- Modules
+- Asynchronous Programming
+  - callbacks
+  - promises
+  - async/await
+- Jest
+
+## Project
+
+- data manipulation
+- makeshift server
+
 ## OOP (Object Oriented Programming)
 
 ### Why do we care?
