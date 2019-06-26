@@ -1,5 +1,17 @@
 # Week 1: Welcome
 
+* [Tuesday](#Tuesday)
+  * [Discord](#Discord)
+  * [Current Events](#Current-Events)
+  * [Tech Overview](#Tech-Overview)
+  * [Tooling Setup](#Tooling-Setup)
+  * [The Command Line: Basics](#The-Command-Line-Basics)
+  * [Command Line: Cheat Sheets](#Command-Line-Cheat-Sheets)
+  * [Git](#Git)
+* [Wednesday](#Wednesday)
+  * [A Few JavaScript Things](#A-Few-JavaScript-Things)
+  * [Hangman](#Hangman)
+
 ## Tuesday
 
 ### Discord
@@ -213,3 +225,89 @@ Wipe the code from drive
 - make your own branch
 - Add your own contact info, using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 - commit, push, PR, merge
+
+## Wednesday
+
+### A Few JavaScript Things
+
+![Node](https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png)
+
+Node is a JavaScript runtime that allows us to run JS anywhere, including the console. We can execute any program by running 
+```sh
+node myfile.js
+```
+
+Node also allows us to import packages. Packages are just pieces of code that we can include in our program for extra functionality. 
+Most packages can be found on the [Node Pacakge Management (npm) registry](https://www.npmjs.com/). 
+We also use _npm_ to download packages into our projects.
+
+Before installing packages to a project we must first make a `package.json` file.
+This file basically keeps track of all the packages and their versions.
+To easily make a `package.json` run:
+```sh
+npm init -y
+```
+
+(The `-y` tells _npm init_ to use the default settings. You can read more about that [here](https://docs.npmjs.com/cli/init)).
+
+You should see a new file called `package.json` appear in the root of your project.
+
+Once you have this file you can now install packages.
+We install packages by running:
+```sh
+npm i <package name>
+```
+
+(The `i` stands for install. You can also run `npm install`)
+
+We are going to experiment with a package called [`readline-sync`](https://www.npmjs.com/package/readline-sync), so run
+```sh
+npm readline-sync
+```
+
+Now that we have this package, we can import it into any file, like so:
+```js
+const readlineSync = require('readline-sync');
+```
+
+The `require` function is how we import a _module_ (package) into a file.
+
+Now we can use however we want!
+Take a look at the [docs](https://www.npmjs.com/package/readline-sync) for some use cases and example code.
+
+### Hangman
+
+#### Teams
+
+- Cody & CJ
+- Andre & Adam
+- Dandy, Dean, & Ayana
+- Brennan & Roberto
+
+#### Your Task
+
+With your team, code a hangman game that can be run in the console.
+This game must
+- use the provided word bank to randomly choose a target word
+- accept user input one character at a time
+  - if the letter is in the target word, reveal the letters and move to the next turn
+  - if the letter is not in the target word, the player receives one strike
+
+The game ends if
+- the user correctly guesses all of the letters
+- the user gets 5 strikes
+
+At the end of the game, exit the program.
+**Bonus:** allow the player to choose if they would like to play again, and if so, start over with a new word
+
+You should give the player feedback via the console such as
+- displaying the revealed and unrevealed letters of the target string
+- whether a letter was correctly or incorrectly guessed
+- number of strikes
+- win/lose message
+
+#### Allowed Resources
+
+You may use any resources you find on the internet **except** any solutions to this exact problem (obviously). Google, StackOverflow, and the MDN docs are your friends 👫
+
+You will most likely need to use the `readline-sync` package we discussed earlier.
