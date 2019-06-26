@@ -19,6 +19,8 @@ For more detailed notes, look in the corresponding folder for each week.
 | React, stateless functional components vs class                                                                   | prop types                             | routing                                                         | Advanced React: hooks | Authentication    |
 | Architecture, microservices, CI/CD, testing                                                                       |                                        |                                                                 |                       |                   |
 
+![The Stack](WebArchitecture.png)
+
 ## Project: Forum
 
 - transform MD into HTML
