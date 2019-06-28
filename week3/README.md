@@ -1,6 +1,16 @@
 # Week 3: JavaScript
 
-- [Values, Types and Operators](#Values-Types-and-Operators)
+- [Grammar and Good Practices](#Grammar-and-Good-Practices)
+- [Types](#Types)
+  - [String](#String)
+  - [Boolean](#Boolean)
+  - [Number](#Number)
+  - [null](#null)
+  - [undefined](#undefined)
+  - [Object](#Object)
+  - [Symbol](#Symbol)
+  - [BigInt (New)](#BigInt-New)
+- [Operations](#Operations)
 - [Program Structure](#Program-Structure)
 - [Functions](#Functions)
   - [Standard](#Standard)
@@ -34,14 +44,52 @@
   - [Unit](#Unit)
   - [Integration](#Integration)
   - [End-to-end (E2E)](#End-to-end-E2E)
+- [Project](#Project)
 - [Resources](#Resources)
 
-## Project <!-- omit in toc -->
+## Grammar and Good Practices
 
-- data manipulation
-- makeshift server
+## Types
 
-## Values, Types and Operators
+I sorted these into types that I use frequently. I figured it be useful to study things that might appear more often.
+
+### String
+
+### Boolean
+
+- Properties:
+  - true of false
+
+<!-- TODO: Where should we put Truthy and Falsey? -->
+
+### Number
+
+- Properties:
+  - 64-bit value
+  - Integer or float
+  - Positive or negative
+  - Special `Number` key words:
+    - `Infinity`
+    - `-Infinity`
+    - `NaN`
+- Math Details:
+  - Order of operations (PEMDAS) still applies
+  - All operations on numbers result in floating-point arithmetic.
+    - `/`: Standard division does not trucate decimal values; it maintains floating point precision.
+    - `%`: Modulus operator still takes the remainder.
+    - Since floating-point rules apply, be careful of high-precision results; you could lose precision.
+
+### null
+
+### undefined
+
+### Object
+
+### Symbol
+
+### BigInt (New)
+
+## Operations
 
 ## Program Structure
 
@@ -240,13 +288,71 @@ More advanced, can be covered later.
 
 ### Error Handling
 
-#### Try
+#### Try / Catch
 
-#### Catch
+When you have a block of code that could be prone to errors / bugs, you might want to wrap it in a `try {}` block. However, every `try` block should have a proceeding `catch() {}` block along with it
+
+```js
+const getUserData (database) {
+  try {
+    const data = database.find('user');
+  } catch (err) {
+    console.log(err);
+  }
+}
+```
+
+If the code within the `try` block fails:
+
+- It immediately generates an `Error` object that breaks the normal programming flow.
+- This object will travel up the call stack until something resolves the error or the program crashes.
+
+The first thing that could resolve the error is the `Catch` block. In the code snippet above, `err` is the `Error` object that was generated when `database.find('user')` failed. All we do with the error is resolve it by logging it to the console. Since I don't know what to do with the error right now, logging it is the best I can do.
 
 #### Throw
 
-#### New: Finally
+Continuing our example from above, a better solution to handling an error we don't know what to do with is to `throw` the error.
+
+```js
+const getUserData (database) {
+  try {
+    const data = database.find('user');
+  } catch (err) {
+    console.log(err);
+    throw err; // DEV: Now I added a throw expression.
+  }
+}
+```
+
+Now, my error handling allows whatever called `getUserData()` to deal with the error and logs the issue where it happened (better for debugging).
+
+**Just be careful!** If you never resolve the problem and continue to throw the error, your program will crash.
+
+#### Finally (new to JS)
+
+Continuing our example from above... If I had something that **MUST** be done after my `try` and `catch` blocks, it can be done in a `finally` block.
+
+```js
+const getUserData (database) {
+  try {
+    const data = database.find('user');
+  } catch (err) {
+    console.log(err);
+    throw err;
+  } finally {
+    console.log('Database operations: Finished'); // DEV: log when done.
+  }
+}
+```
+
+Now, in my `finally` block, I log when this function completes **NO MATTER WHAT**.
+
+If the `try` block is:
+
+- Successful: `try -> finally`
+- Unsuccessful: `try -> catch -> finally`
+
+**Just be careful!** If you have code that fails in the finally, there is no `catch` block to save you.
 
 ## ES6 Goodies (Mixed Bag)
 
@@ -284,8 +390,17 @@ Covered in detail under the [Functions Section]()
 
 ### End-to-end (E2E)
 
+## Project
+
+- data manipulation
+- makeshift server
+
 ## Resources
 
+- JS Basics:
+  - [EloquentJS - Values](https://eloquentjavascript.net/01_values.html)
+  - [MDN - Grammar and Types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types)
+  - [MDN - Expressions and Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators)
 - [Object Basics](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics)
 - [Prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
 - [Classes](https://www.javascriptjanuary.com/blog/es6-classes)
