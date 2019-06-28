@@ -1,41 +1,65 @@
 # Week 3: JavaScript
 
-- Values, Types, and Operators
-- Program Structure
-- Functions
-  - callbacks
-  - arrow functions
-  - closures
-- Class
-  - **constructors**
-  - prototypes
-- Strings
-  - template literals
-  - advanced objects: Map, Set
-- Arrays
-- Objects
-  - OOP
-  - protoypes and inheritance
-- Higher-order Functions
-- The Secret Life of Objects
-- Bugs and Errors
-  - try, catch
-- ES6 goodies
-  - spread, rest
-  - arrow functions
-  - destructuring
-  - let, const, var
-- Modules
-- Asynchronous Programming
-  - callbacks
-  - promises
-  - async/await
-- Jest
+- [Values, Types and Operators](#Values-Types-and-Operators)
+- [Program Structure](#Program-Structure)
+- [Functions](#Functions)
+  - [Standard](#Standard)
+  - [Arrow](#Arrow)
+  - [Higher-order](#Higher-order)
+  - [Closures](#Closures)
+- [Arrays](#Arrays)
+  - [Iterators](#Iterators)
+  - [Tuples](#Tuples)
+- [OOP (Object Oriented Programming)](#OOP-Object-Oriented-Programming)
+  - [Why do we care?](#Why-do-we-care)
+  - [Basics: Objects](#Basics-Objects)
+  - [The Secret Life of Objects](#The-Secret-Life-of-Objects)
+  - [Basics: Prototypes](#Basics-Prototypes)
+  - [New-ish: ES6 Classes](#New-ish-ES6-Classes)
+  - [Theory of OOP](#Theory-of-OOP)
+- [Bugs and Error Handling](#Bugs-and-Error-Handling)
+  - [Debugging](#Debugging)
+  - [Error Handling](#Error-Handling)
+- [ES6 Goodies (Mixed Bag)](#ES6-Goodies-Mixed-Bag)
+  - [Variable Identifiers](#Variable-Identifiers)
+  - [Spread / Rest Operator](#Spread--Rest-Operator)
+  - [Arrow Functions](#Arrow-Functions)
+  - [Destructuring](#Destructuring)
+- [Modules](#Modules)
+- [Asynchronous Programming](#Asynchronous-Programming)
+  - [Callbacks](#Callbacks)
+  - [Promises](#Promises)
+  - [Async/Await](#AsyncAwait)
+- [Jest](#Jest)
+  - [Unit](#Unit)
+  - [Integration](#Integration)
+  - [End-to-end (E2E)](#End-to-end-E2E)
+- [Resources](#Resources)
 
-## Project
+## Project <!-- omit in toc -->
 
 - data manipulation
 - makeshift server
+
+## Values, Types and Operators
+
+## Program Structure
+
+## Functions
+
+### Standard
+
+### Arrow
+
+### Higher-order
+
+### Closures
+
+## Arrays
+
+### Iterators
+
+### Tuples
 
 ## OOP (Object Oriented Programming)
 
@@ -80,6 +104,10 @@ Teaching Instructions:
 
 - Start attaching things to the object and showing how JavaScript is a dynamic language.
 - Show that variables and functions being values in a property.
+
+### The Secret Life of Objects
+
+TODO: Figure out what this is...
 
 ### Basics: Prototypes
 
@@ -205,6 +233,56 @@ Ex: Everything in JS is an object. The `String` class **inherits** from the `Obj
 #### Polymorphism
 
 More advanced, can be covered later.
+
+## Bugs and Error Handling
+
+### Debugging
+
+### Error Handling
+
+#### Try
+
+#### Catch
+
+#### Throw
+
+#### New: Finally
+
+## ES6 Goodies (Mixed Bag)
+
+### Variable Identifiers
+
+#### Let
+
+#### Const
+
+#### Var
+
+### Spread / Rest Operator
+
+### Arrow Functions
+
+Covered in detail under the [Functions Section]()
+
+### Destructuring
+
+## Modules
+
+## Asynchronous Programming
+
+### Callbacks
+
+### Promises
+
+### Async/Await
+
+## Jest
+
+### Unit
+
+### Integration
+
+### End-to-end (E2E)
 
 ## Resources
 
