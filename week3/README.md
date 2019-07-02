@@ -12,9 +12,9 @@
   - [Control Flow](#Control-Flow)
   - [Error Handling](#Error-Handling)
 - [Functions](#Functions)
-  - [Standard](#Standard)
-  - [Arrow](#Arrow)
-  - [Higher-order](#Higher-order)
+  - [Function Expression](#Function-Expression)
+  - [Arrow Function](#Arrow-Function)
+  - [Higher-order Function](#Higher-order-Function)
   - [Closures](#Closures)
 - [Arrays](#Arrays)
   - [Iterators](#Iterators)
@@ -170,10 +170,31 @@ Javascript has an `Object` type that wraps all things during execution. This wil
 
 #### String
 
+- Properties:
+
+  - Represents text
+  - Array-like structure of characters
+  - Special characters can be escaped with a `\` (backslash)
+
+  ```js
+  // Using the "new line" escaped character
+  console.log('Something\nFun');
+  /* Expected Output:
+   * Something
+   * Fun
+   */
+  ```
+
+- Basic Operations:
+  - `+`: Concatenates two strings into one
+  - There is a ton of operations on strings. Please refer to the [MDN - Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) section of the docs to learn more.
+
 #### Boolean
 
 - Properties:
   - true of false
+
+Make sure to include information about [Truthy and Falsy](https://www.sitepoint.com/javascript-truthy-falsy/). It is important to know that JavaScript has implicit type coersion to ensure a flexible runtime.
 
 #### Number
 
@@ -219,8 +240,6 @@ From the MDN docs:
 <!-- TODO: Get more info and figure this stuff out. -->
 
 ## Operations
-
-[Truthy and Falsy](https://www.sitepoint.com/javascript-truthy-falsy/)
 
 ## Program Structure
 
@@ -366,11 +385,47 @@ If the `try` block is:
 
 ## Functions
 
-### Standard
+### Function Expression
 
-### Arrow
+- `this` binding: Bind the `this` property to the caller of the function.
+- `return`: Standard function expression do not have an implicit return. You have to be clear in what you return if you use this notation.
+- `constructors`: Common use as a constructor in vanilla js.
+  - `prototype`: You can construct an object with a function expression because it has an associated prototype.
 
-### Higher-order
+```js
+function doSomething(param1, param2) {
+  // do something
+  return true;
+}
+```
+
+### Arrow Function
+
+- `this` binding: Do not have their own `this` binding.
+- `return`: Arrow functions have two forms and each affects the return of the function.
+  - Block body: Needs to have a return statement to return
+  - Concise body: Will implicitly return your last statement.
+- `constructors`: Cannot be used as constructors.
+  - `prototype`: Arrow functions do not have a prototype attatched.
+
+Block Body:
+
+```js
+const doSomething = (param1, param2) => {
+  // do something
+  return true;
+};
+```
+
+Concise Body:
+
+```js
+const doSomething = (param1, param2) => true;
+```
+
+**NOTE:** Arrow functions make poor object methods because
+
+### Higher-order Function
 
 ### Closures
 
@@ -598,6 +653,7 @@ More advanced, can be covered later.
   - [EloquentJS - Values](https://eloquentjavascript.net/01_values.html)
   - [MDN - Grammar and Types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types)
   - [MDN - Expressions and Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators)
+  - [MDN - Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 - [Object Basics](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics)
   - [Prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
   - [Classes](https://www.javascriptjanuary.com/blog/es6-classes)
