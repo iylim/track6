@@ -1,102 +1,66 @@
-# Making a learning platform
+# Project Plan
 
-Overview:
+## Checklist for a green flag on development
 
-I want an elaborate project pitch.  
-Get in the timeline to the board and have a solid project plan.  
-This is a scaling issue of getting people on board.
+- [ ] Budget
+- [ ] Timeline
+- [ ] SOW
+- [ ] MSA
+- [ ] ...
+- [ ] Approval
 
-Pipeline:
+## Scoping Lecture
 
-- referrals
-- job postings
-- university partnerships
-- direct hire (lots of work, but effective)
-- website
-- applications
-
-Users:
-
-- Coders
-- Hobbiests
-- Skills
-- Anyone interested in learning
-
-Core Value:
-
-- We don't want to make people go into debt after paying money for expensive programs like:
-  - college
-  - boot camps
-- The promise of Talent Path that you will be an employee
-- Training that can give you the skills to become better in a relevant technology-related occupation
-
-Values:
-
-- Give people the opportunity to catch up to the level of standards that Talent Path has.
-- Practical value in stead of theory
-- Have tracks of knowledge in the learning platform
-  - Software engineering
-  - web design
-  - data
-  - security
-  - sales force
-  - tabeleu
-- We are making a community of developers
-- After people take this, you can jump into the cool stuff when you are an employee.
-
-Threats:
-
-- Coding bootcamps
-- Other online learning platforms
-
-Candidate experience/ journey: they are getting to a certain place by meeting benchmarks along the way
-
-- Path of the candidate
-- Path of the advisor
-- Sales involvement
-  - Clients will want access to what talent is ready.
-- Needs to hook into the pipeline of our recruiting process.
-- Behavioral Assessment
-
-What questions do you have?
-
-- Vision:
-- Budget: there is a cost justification in doing this.
-- Timeline: we can mangage our own projects.
-  - Reviews
-    - Agenda (Julie emphasized this)!!!
-  - Approvals
-  - Feedback
-  - Questions
-- Resources/Manpower:
-  - We will have some people help us out who are specialize in the field
-  - First Intro
-  - Testing
+- Statement of Work (SOW) (living document of services):
+  - Scope of work
+  - Description
+  - Cost
+  - How to build
+  - To update the document:
+    - Change order
+    - Extension
+- Master Service Agreement (MSA)
+  - Relationship with the client
 - Scope
-  - Features / MVP
-    - Reporting
-  - People adding content
+  - This is what we want
+  - This is how long
+  - This is what we will get
 
-Discovery Session:
+## Proposed Phases
 
-Three different learning sites to model from:
+1. Skeleton
+   1. User flow
+      1. Applicants first approach
+   2. Navigation
+   3. Pages that exist
+      1. Dashboard
+      2. Page for courses
+      3. Page for projects
+2. MVP
+3. Full content site
+4. Misc. (Not sure yet)
+   1. Reporting capabilities for
+      1. Courses
+      2. Problems
+      3. Usage
+      4. Getting badges
 
-- 1 hour requirements
-- Discovery of sites
-  - Looking into the staples of things
-  - What is market research?
+### Content for site
 
-Business leader discussion
+Pages:
 
-Feature and Discovery Sites:
+- Home page
+  - Video about Talent Path's motivation / core values is the call to action
+  - The UI of Devon Stank and Wes Bos would be good examples to take from
 
-- Lynda Learning
-- Revature Pro
-  - Have a fake email account do the sign up
-- Look up new sites and
+Main user flow:
 
-Feature Breakdown into Scope:
+- Click on video
+- Go to suggested content (fill in for us web dev people)
 
-My role would be a project manager.
+## Detailed Scope
 
-Look up **snowflake** tool
+## Notes
+
+- Make the project friendly enough to give to new cohorts.
+- Look up **snowflake** tool
