@@ -60,6 +60,85 @@ Main user flow:
 
 ## Detailed Scope
 
+### General
+
+- Video player
+- authentication
+- responsive design
+- site analytics
+- accessibility WAI
+- navbar
+- feedback
+- notfication
+- 3rd party integration
+
+### Home
+
+- Carousel
+  - Testimonials (Up to 5)
+- About Talent Path
+  - Tear-jerking Video
+- Path Previews (Up to 2)
+- Calls to Action for:
+  - Register / Login
+  - Explore
+
+### Signup
+
+- Oauth
+
+### Dashboard
+
+- roles
+  - user
+    - activity
+    - profile progress
+    - course & path progress
+  - admin
+  - advisor:
+    - reporting
+    - analytics
+    - candidate search
+    - List of users
+    - Analytics
+
+### Profile
+
+- personal info
+- resume upload
+- badges
+
+### Courses
+
+- browse
+- search / filter
+
+### Path
+
+- syllabus
+- description
+- browse
+- search / filter
+
+### Lessons
+
+- user ide
+- comments
+- assessment
+- Q/A
+- Progress markers
+- videos
+
+### Support
+
+- contact
+- help
+- FAQ
+
+### Documentation
+
+- Admin documentation on how to run the site.
+
 ## Notes
 
 - Make the project friendly enough to give to new cohorts.
