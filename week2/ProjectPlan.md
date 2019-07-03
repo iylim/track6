@@ -69,7 +69,7 @@ Main user flow:
 - accessibility WAI
 - navbar
 - feedback
-- notfication
+- notification
 - 3rd party integration
 
 ### Home
@@ -85,7 +85,7 @@ Main user flow:
 
 ### Signup
 
-- Oauth
+- OAuth
 
 ### Dashboard
 
@@ -138,6 +138,16 @@ Main user flow:
 ### Documentation
 
 - Admin documentation on how to run the site.
+
+### Gamification
+
+Encouragement for finishing tasks
+
+### Professional / Friendly Verbiage
+
+### Final Steps
+
+Package up personal profile and send to Emily as a "Hooray, you are considered now!"
 
 ## Notes
 
