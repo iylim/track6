@@ -14,7 +14,7 @@ Talent Path is anticipating an increase in demand from employers around America.
 
 The solution is to create a web-based learning tool that qualifies and builds a recruitment pipeline and database for potential candidates. Our plan is to develop and deploy a free learning/training experience to automate the technical assessment and qualifying of the recruitment process. The online platform will be accesible for any potential Talent Path candidates giving a new way of identifying, qualifying, and hiring talent. This will not only drive efficiency, but also save costs in the hiring process.
 
-#### Current Process
+#### Current Sources
 
 The current hiring **pipeline** is done with:
 
