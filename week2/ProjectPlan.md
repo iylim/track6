@@ -97,7 +97,6 @@ Main user flow:
   - admin
   - advisor:
     - reporting
-    - analytics
     - candidate search
     - List of users
     - Analytics
