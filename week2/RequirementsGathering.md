@@ -1,5 +1,11 @@
 # Requirements Gathering
 
+- [User Profiles](#User-Profiles)
+  - [Candidate's Journey](#Candidates-Journey)
+  - [Advisor's Journey](#Advisors-Journey)
+  - [Questions that need to be addressed](#Questions-that-need-to-be-addressed)
+- [Market Research](#Market-Research)
+
 ## User Profiles
 
 Core Users:

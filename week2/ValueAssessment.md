@@ -1,5 +1,13 @@
 # Value Assessment
 
+- [Core Values](#Core-Values)
+- [Derivative Values](#Derivative-Values)
+- [SWOT](#SWOT)
+  - [Strengths](#Strengths)
+  - [Weaknesses](#Weaknesses)
+  - [Opportunities](#Opportunities)
+  - [Threats](#Threats)
+
 ## Core Values
 
 - We don't want to make people go into debt after paying money for expensive programs like:
