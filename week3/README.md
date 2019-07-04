@@ -1,6 +1,11 @@
 # Week 3: JavaScript
 
 - [Grammar and Good Practices](#Grammar-and-Good-Practices)
+- [Scoping](#Scoping)
+- [`let`, `const`, and `var`](#let-const-and-var)
+- [Hoisting](#Hoisting)
+- [Functions](#Functions)
+- [Project](#Project)
 - [Types](#Types)
   - [String](#String)
   - [Boolean](#Boolean)
@@ -12,7 +17,7 @@
   - [BigInt (New)](#BigInt-New)
 - [Operations](#Operations)
 - [Program Structure](#Program-Structure)
-- [Functions](#Functions)
+- [Functions](#Functions-1)
   - [Standard](#Standard)
   - [Arrow](#Arrow)
   - [Higher-order](#Higher-order)
@@ -44,10 +49,94 @@
   - [Unit](#Unit)
   - [Integration](#Integration)
   - [End-to-end (E2E)](#End-to-end-E2E)
-- [Project](#Project)
+- [Project](#Project-1)
 - [Resources](#Resources)
 
 ## Grammar and Good Practices
+
+## Scoping
+
+_Scope_ refers to the part of a program where a variable is visible or available.
+
+For variables defined outside of any function or block, the scope is the whole program—you can refer to such bindings wherever you want.
+These are called _global_.
+
+But variables created for function parameters or declared inside a function can be referenced only in that function, so they are known as _local_ variables.
+This provides some isolation between functions—each function call acts in its own little world (its local environment) and can often be understood without knowing a lot about what’s going on in the global environment.
+
+## `let`, `const`, and `var`
+
+In JavaScript we have three words to declare variables: `let`, `const`, and `var`.
+
+In the pre-ES6 days (before 2015), `var` was the only way to declare variables in JS.
+The scope of a variable declared with `var` is its _current execution context_, which is either the enclosing function or, for variables declared outside any function, global.
+This means variables defined with `var` are **not** block scoped.
+
+Variables declared with `let` and `const` are in fact local to the block that they are declared in, so if you create one of those inside of a loop, the code before and after the loop cannot “see” it.
+
+This brings us to a classic problem
+
+```js
+for (var i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 1000);
+}
+```
+
+What do you think this will output?
+How can we fix it to output "correctly"?
+
+One more thing, the difference between `let` and `const` is that a variable declared with `let` (and `var`) can be reassigned whereas a `const` cannot (hence the term **const**ant).
+
+```js
+let myLetStr = "First it's this";
+myLetStr = "Now it's this"; // This is fine
+
+const myConstStr = "Hello";
+myConstStr = "Goodbye"; // Not allowed
+// will raise TypeError: Assignment to constant variable.
+```
+
+## Hoisting
+
+<!-- TODO: this -->
+
+## Functions
+
+There are a few ways to create functions in JavaScript.
+
+```js
+// or you can use let or var
+const power = function(num, exp) {
+  return num ** exp;
+};
+```
+
+```js
+function power(num, exp) {
+  return num ** exp;
+}
+```
+
+In JavaScript, functions are _first-class citizens_.
+This means a function can be treated like any variable:
+you can use it in arbitrary expressions, not just call it.
+It is possible to store a function value in a new variable, pass it as an argument to a function, and so on.
+Similarly, a variable that holds a function is still just a regular variable and can, if not constant, be assigned a new value, like so:
+
+```js
+let launchMissiles = function() {
+  missileSystem.launch("now");
+};
+if (safeMode) {
+  launchMissiles = function() {
+    /* do nothing */
+  };
+}
+```
+
+## Project
 
 ## Types
 
@@ -145,7 +234,7 @@ obj3 = MyObject();
 function MyConstructor(name) {
   this.name = name;
 }
-obj4 = new MyConstructor('bob');
+obj4 = new MyConstructor("bob");
 ```
 
 Teaching Instructions:
@@ -166,7 +255,7 @@ Traditionally,
 When you make a string:
 
 ```js
-const str = 'hello';
+const str = "hello";
 ```
 
 Teaching instructions:
@@ -194,7 +283,7 @@ class Pet {
   }
 }
 
-const dog = new Pet('Max');
+const dog = new Pet("Max");
 ```
 
 We are not just limited to data as well; we can supply methods to manipulate said data.
@@ -241,8 +330,8 @@ class Dog extends Pet {
   }
 }
 
-const myDog = new Dog('Mike');
-myDog.doTrick('jump');
+const myDog = new Dog("Mike");
+myDog.doTrick("jump");
 
 // Output: I can jump. Watch this!
 ```
