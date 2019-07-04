@@ -1,18 +1,34 @@
 # Requirements Gathering
 
-## User Experience / Journey
+## User Profiles
 
 Core Users:
 
-- Potential Applicants:
-  - Coders
-  - Hobbiests
-  - Anyone interested in learning
+- Applicants:
+  - Graduates:
+    - Pain points:
+      - Desperate
+      - Stressed
+      - Overwhelmed / Lost
+      - Inexperienced
+      - Indebted
+      - Underqualified
+    - Focuses:
+      - More technically literate
+      - Highly motivated to move quickly (fast turnover of path completion)
 - Advisors
 
 Future Users:
 
-- Sales team
+- Applicants:
+  - Career Switchers:
+    - Pain Points:
+      - Under paid
+      - Unemployed
+      - Uninformed
+      - Unable to relocate?
+    - Focuses:
+- Sales:
   - Clients will want access to what talent is ready.
 
 ### Candidate's Journey
