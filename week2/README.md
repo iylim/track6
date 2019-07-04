@@ -39,4 +39,4 @@ Please refer to the "ProjectPlan" markdown file.
 
 ## Design Documents
 
-TBD
+Please refer to the "Consolidated_Wireframe" PDF file.
