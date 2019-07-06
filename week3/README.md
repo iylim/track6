@@ -1,11 +1,6 @@
 # Week 3: JavaScript
 
 - [Grammar and Good Practices](#Grammar-and-Good-Practices)
-- [Scoping](#Scoping)
-- [`let`, `const`, and `var`](#let-const-and-var)
-- [Hoisting](#Hoisting)
-- [Functions](#Functions)
-- [Project](#Project)
 - [Types](#Types)
   - [String](#String)
   - [Boolean](#Boolean)
@@ -15,9 +10,13 @@
   - [Object](#Object)
   - [Symbol](#Symbol)
   - [BigInt (New)](#BigInt-New)
+- [Scoping](#Scoping)
+- [`let`, `const`, and `var`](#let-const-and-var)
+  - [Immutability](#Immutability)
+- [Hoisting](#Hoisting)
 - [Operations](#Operations)
 - [Program Structure](#Program-Structure)
-- [Functions](#Functions-1)
+- [Functions](#Functions)
   - [Standard](#Standard)
   - [Arrow](#Arrow)
   - [Higher-order](#Higher-order)
@@ -49,94 +48,10 @@
   - [Unit](#Unit)
   - [Integration](#Integration)
   - [End-to-end (E2E)](#End-to-end-E2E)
-- [Project](#Project-1)
+- [Project](#Project)
 - [Resources](#Resources)
 
 ## Grammar and Good Practices
-
-## Scoping
-
-_Scope_ refers to the part of a program where a variable is visible or available.
-
-For variables defined outside of any function or block, the scope is the whole program—you can refer to such bindings wherever you want.
-These are called _global_.
-
-But variables created for function parameters or declared inside a function can be referenced only in that function, so they are known as _local_ variables.
-This provides some isolation between functions—each function call acts in its own little world (its local environment) and can often be understood without knowing a lot about what’s going on in the global environment.
-
-## `let`, `const`, and `var`
-
-In JavaScript we have three words to declare variables: `let`, `const`, and `var`.
-
-In the pre-ES6 days (before 2015), `var` was the only way to declare variables in JS.
-The scope of a variable declared with `var` is its _current execution context_, which is either the enclosing function or, for variables declared outside any function, global.
-This means variables defined with `var` are **not** block scoped.
-
-Variables declared with `let` and `const` are in fact local to the block that they are declared in, so if you create one of those inside of a loop, the code before and after the loop cannot “see” it.
-
-This brings us to a classic problem
-
-```js
-for (var i = 0; i < 5; i++) {
-  setTimeout(function() {
-    console.log(i);
-  }, 1000);
-}
-```
-
-What do you think this will output?
-How can we fix it to output "correctly"?
-
-One more thing, the difference between `let` and `const` is that a variable declared with `let` (and `var`) can be reassigned whereas a `const` cannot (hence the term **const**ant).
-
-```js
-let myLetStr = "First it's this";
-myLetStr = "Now it's this"; // This is fine
-
-const myConstStr = "Hello";
-myConstStr = "Goodbye"; // Not allowed
-// will raise TypeError: Assignment to constant variable.
-```
-
-## Hoisting
-
-<!-- TODO: this -->
-
-## Functions
-
-There are a few ways to create functions in JavaScript.
-
-```js
-// or you can use let or var
-const power = function(num, exp) {
-  return num ** exp;
-};
-```
-
-```js
-function power(num, exp) {
-  return num ** exp;
-}
-```
-
-In JavaScript, functions are _first-class citizens_.
-This means a function can be treated like any variable:
-you can use it in arbitrary expressions, not just call it.
-It is possible to store a function value in a new variable, pass it as an argument to a function, and so on.
-Similarly, a variable that holds a function is still just a regular variable and can, if not constant, be assigned a new value, like so:
-
-```js
-let launchMissiles = function() {
-  missileSystem.launch("now");
-};
-if (safeMode) {
-  launchMissiles = function() {
-    /* do nothing */
-  };
-}
-```
-
-## Project
 
 ## Types
 
@@ -178,11 +93,164 @@ I sorted these into types that I use frequently. I figured it be useful to study
 
 ### BigInt (New)
 
+## Scoping
+
+_Scope_ refers to the part of a program where a variable is visible or available.
+
+For variables defined outside of any function or block, the scope is the whole program—you can refer to such bindings wherever you want.
+These are called _global_.
+
+But variables created for function parameters or declared inside a function can be referenced only in that function, so they are known as _local_ variables.
+This provides some isolation between functions—each function call acts in its own little world (its local environment) and can often be understood without knowing a lot about what’s going on in the global environment.
+
+## `let`, `const`, and `var`
+
+In JavaScript we have three words to declare variables: `let`, `const`, and `var`.
+
+In the pre-ES6 days (before 2015), `var` was the only way to declare variables in JS.
+The scope of a variable declared with `var` is its _current execution context_, which is either the enclosing function or, for variables declared outside any function, global.
+This means variables defined with `var` are **not** block scoped.
+
+Variables declared with `let` and `const`, however, are in fact local to the block that they are declared in. If you create one of those inside of a loop, the code before and after the loop cannot “see” it.
+
+This brings us to a classic problem
+
+```js
+for (var i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 1000);
+}
+```
+
+What do you think this will output?
+How can we fix it to output "correctly"?
+
+### Immutability
+
+The difference between `let` and `const` is that a variable declared with `let` (and `var`) can be reassigned whereas a `const` cannot (hence the term **const**ant).
+
+```js
+let myLetStr = "First it's this";
+myLetStr = "Now it's this"; // This is fine
+
+const myConstStr = "Hello";
+myConstStr = "Goodbye"; // Not allowed
+// will raise TypeError: Assignment to constant variable.
+```
+
+We should prefer to use `const` wherever possible in order to reduce confusion with reassignment.
+If our program ever tries to reassign something unexpectedly, we will get an error.
+
+## Hoisting
+
+_Hoisting_ can be thought of as automatically bringing variable declarations to the top of their respective blocks so that variables can be used before they are declared.
+
+The actual definition is a bit more complex:
+
+> Conceptually, for example, a strict definition of hoisting suggests that variable and function declarations are physically moved to the top of your code, but this is not in fact what happens. Instead, the variable and function declarations are put into memory during the compile phase, but stay exactly where you typed them in your code.
+>
+> — [MDN](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+
+Only `var` and `function` declarations are hoisted.
+One of the advantages of this is that it allows you to use a function before you declare it in your code.
+
+```js
+catName("Chloe"); // This will work fine
+
+function catName(name) {
+  console.log("My cat's name is " + name);
+}
+```
+
+We can also do this with `var` declarations:
+
+```js
+myCat = "Chloe";
+console.log(myCat); // This will work fine
+var myCat;
+```
+
+For all intents and purposes the interpreter sees
+
+```js
+var myCat;
+myCat = "Chloe";
+console.log(myCat); // This will work fine
+```
+
+Notice that I still had to define (assign) the variable before using it.
+_Declarations_ will be hoisted, _definitions_ will not.
+
+Accessing an undeclared `var` variable will yield `undefined`.
+
+```js
+console.log(myCat); // This will work fine, but will print "undefined"
+var myCat;
+```
+
+🙄 You're probably starting to notice how confusing this all is.
+
+Personally, I am fine with hoisted function declarations.
+It allows us to write functional code without having to worry about order.
+We can organize our code in a way that makes sense for us.
+
+However, I think it is a bit wack that variables can be used before they are declared.
+This is one of the reasons `let` and `const` were added to the spec in ES6.
+
+Notice:
+
+```js
+myCat = "Chloe"; // This will crash the program
+console.log(myCat);
+let myCat;
+```
+
+This code errors on the first line with `ReferenceError: myCat is not defined`.
+I think this is much more expected behavior.
+We get an actual error when a variable is accessed in an unexpected location.
+
+An error, rather than silently evaluating to `undefined`, is much more helpful for debugging.
+
+These are a few of the reasons JavaScript developers should prefer `let`/`const` over `var`.
+
 ## Operations
 
 ## Program Structure
 
 ## Functions
+
+There are a few ways to create functions in JavaScript.
+
+```js
+// or you can use let or var
+const power = function(num, exp) {
+  return num ** exp;
+};
+```
+
+```js
+function power(num, exp) {
+  return num ** exp;
+}
+```
+
+In JavaScript, functions are _first-class citizens_.
+This means a function can be treated like any variable:
+you can use it in arbitrary expressions, not just call it.
+It is possible to store a function value in a new variable, pass it as an argument to a function, and so on.
+Similarly, a variable that holds a function is still just a regular variable and can, if not constant, be assigned a new value, like so:
+
+```js
+let launchMissiles = function() {
+  missileSystem.launch("now");
+};
+if (safeMode) {
+  launchMissiles = function() {
+    /* do nothing */
+  };
+}
+```
 
 ### Standard
 
