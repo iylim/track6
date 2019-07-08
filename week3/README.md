@@ -209,7 +209,7 @@ Make sure to include information about [Truthy and Falsy](https://www.sitepoint.
 - Math Details:
   - Order of operations (PEMDAS) still applies
   - All operations on numbers result in floating-point arithmetic.
-    - `/`: Standard division does not trucate decimal values; it maintains floating point precision.
+    - `/`: Standard division does not truncate decimal values; it maintains floating point precision.
     - `%`: Modulus operator still takes the remainder.
     - Since floating-point rules apply, be careful of high-precision results; you could lose precision.
 
@@ -592,7 +592,7 @@ In computers we never make the things we represent; we make abstractions of thos
 
 Do you want data to be relevant to the object? Do you want methods to manipulate that data?
 
-Encapsulation gives you a space that is seperated from the outside environment (in loose terms).
+Encapsulation gives you a space that is separated from the outside environment (in loose terms).
 
 #### Inheritance
 
