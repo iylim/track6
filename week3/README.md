@@ -1,31 +1,21 @@
 # Week 3: JavaScript
 
-- [The Birth and Death of JavaScript (video)](#The-Birth-and-Death-of-JavaScript-video)
 - [Grammar and Good Practices](#Grammar-and-Good-Practices)
+  - [Commenting](#Commenting)
+  - [Declarations and Scoping](#Declarations-and-Scoping)
 - [Types](#Types)
-  - [String](#String)
-  - [Boolean](#Boolean)
-  - [Number](#Number)
-  - [null](#null)
-  - [undefined](#undefined)
   - [Object](#Object)
   - [Symbol](#Symbol)
   - [BigInt (New)](#BigInt-New)
-- [Scoping](#Scoping)
-- [`let`, `const`, and `var`](#let-const-and-var)
-  - [Immutability (sort of)](#Immutability-sort-of)
-- [Hoisting](#Hoisting)
 - [Operations](#Operations)
 - [Program Structure](#Program-Structure)
+  - [Control Flow](#Control-Flow)
+  - [Error Handling](#Error-Handling)
 - [Functions](#Functions)
-  - [Optional arguments](#Optional-arguments)
-  - [Default arguments](#Default-arguments)
-  - [`arguments` keyword and rest parameters](#arguments-keyword-and-rest-parameters)
-  - [`this` keyword](#this-keyword)
-  - [Arrow functions](#Arrow-functions)
-  - [Closures](#Closures)
+  - [Standard](#Standard)
+  - [Arrow](#Arrow)
   - [Higher-order](#Higher-order)
-  - [Callbacks](#Callbacks)
+  - [Closures](#Closures)
 - [Arrays](#Arrays)
   - [Iterators](#Iterators)
   - [Tuples](#Tuples)
@@ -36,15 +26,10 @@
   - [Basics: Prototypes](#Basics-Prototypes)
   - [New-ish: ES6 Classes](#New-ish-ES6-Classes)
   - [Theory of OOP](#Theory-of-OOP)
-  - [Exercise](#Exercise)
 - [Bugs and Error Handling](#Bugs-and-Error-Handling)
   - [Debugging](#Debugging)
   - [Error Handling](#Error-Handling)
 - [ES6 Goodies (Mixed Bag)](#ES6-Goodies-Mixed-Bag)
-  - [Variable Identifiers](#Variable-Identifiers)
-  - [Spread / Rest Operator](#Spread--Rest-Operator)
-  - [Arrow Functions](#Arrow-Functions)
-  - [Destructuring](#Destructuring)
 - [Modules](#Modules)
 - [Asynchronous Programming](#Asynchronous-Programming)
   - [Callbacks](#Callbacks-1)
@@ -60,35 +45,175 @@
   - [Functions](#Functions-1)
   - [OOP](#OOP)
 
+## JavaScript and ECMAScript
+
+Show off video: [Weird History of JavaScript](https://www.youtube.com/watch?v=Sh6lK57Cuk4)
+
+JavaScript: A programming language.
+
+ECMAScript: A standard for scripting languages.
+
+JavaScript is an **IMPLEMENTATION** OF ECMAScript. There is a group of people called the European Computer Manufacturer's Association (ECMA) that come up with all of the rules and regulations for what a good scripting language should have.
+
+When we say:
+
+- ES5
+- ES6 / ES2015
+- ES.Next (everything else determined by year of release)
+
+JavaScript moves as quickly as it can with the standards, but the standards will always be ahead of the implementation.
+
+The language is constantly evolving and will add new features after you finish this cohort training. Keep up with the new features, but understand that not all new features can be supported in legacy systems.
+
+Check out this [compatibility chart](https://kangax.github.io/compat-table/es6/) to see what I mean.
+
 ## [The Birth and Death of JavaScript](https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript) (video)
 
 > This science fiction / comedy / absurdist / completely serious talk traces the history of JavaScript, and programming in general, from 1995 until 2035. It's not pro- or anti-JavaScript; the language's flaws are discussed frankly, but its ultimate impact on the industry is tremendously positive.
 
 ## Grammar and Good Practices
 
+### Commenting
+
+As a developer, you should make sure your code is as readable and helpful to other developers as possible. It doesn't need to start that way (hacky code is always nice to start out), but your final code should be documented clearly.
+
+- Single Line comments:
+
+```js
+// Welcome to JS!
+```
+
+- Multi-line comments:
+
+```js
+/*
+ * These are multi-line comments.
+ * You can just put anything in here and
+ * white-space won't effect the comments.
+ */
+```
+
+- [JSDoc Hints](https://devhints.io/jsdoc): Standard JavaScript documentation.
+
+```js
+/**
+ * This is a function.
+ *
+ * @param {string} n - A string param
+ * @return {string} A good string
+ *
+ * @example
+ *
+ *     foo('hello')
+ */
+function foo(n) {
+  return n;
+}
+```
+
+### Declarations and Scoping
+
+- `var`
+
+  - Older style syntax
+  - Scoped globally (exists outside of the block).
+
+  ```js
+  if (true) {
+    var x = 5;
+  }
+  console.log(x); // x is 5
+  ```
+
+  - Loosest of the rules for variable declaration.
+
+- `let`
+
+  - Newer ES6 style syntax
+  - Scoped to the block.
+
+  ```js
+  if (true) {
+    let y = 5;
+  }
+  console.log(y); // ReferenceError: y is not defined
+  ```
+
+  - Lets you reassign and mutate variables
+
+- `const`
+
+  - Newer ES6 style syntax
+  - Scoped to the block.
+  - Only allows for mutating of variables.
+
+  ```js
+  // Reassignment of 'f' causes problems
+  const f = 5;
+  f = 6; // ERROR
+  ```
+
+  ```js
+  // Objects can be mutated, not reassigned
+  const MY_OBJECT = { key: 'value' };
+  MY_OBJECT.key = 'otherValue';
+  ```
+
+  ```js
+  // Arrays can be mutated, not reassigned
+  const MY_ARRAY = ['HTML', 'CSS'];
+  MY_ARRAY.push('JAVASCRIPT');
+  console.log(MY_ARRAY); //logs ['HTML','CSS','JAVASCRIPT'];
+  ```
+
 ## Types
 
 I sorted these into types that I use frequently. I figured it be useful to study things that might appear more often.
 
-### String
+### Object
 
-### Boolean
+Javascript has an `Object` type that wraps all things during execution. This will be discussed further in the OOP section
+
+### Primitives
+
+#### String
+
+- Properties:
+
+  - Represents text
+  - Array-like structure of characters
+  - Special characters can be escaped with a `\` (backslash)
+
+  ```js
+  // Using the "new line" escaped character
+  console.log('Something\nFun');
+  /* Expected Output:
+   * Something
+   * Fun
+   */
+  ```
+
+- Basic Operations:
+  - `+`: Concatenates two strings into one
+  - There is a ton of operations on strings. Please refer to the [MDN - Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) section of the docs to learn more.
+
+#### Boolean
 
 - Properties:
   - true of false
 
-<!-- TODO: Where should we put Truthy and Falsey? -->
+Make sure to include information about [Truthy and Falsy](https://www.sitepoint.com/javascript-truthy-falsy/). It is important to know that JavaScript has implicit type coersion to ensure a flexible runtime.
 
-### Number
+#### Number
 
 - Properties:
   - 64-bit value
   - Integer or float
   - Positive or negative
   - Special `Number` key words:
-    - `Infinity`
-    - `-Infinity`
-    - `NaN`
+    - `Infinity`: behaves an acts like infinity
+    - `-Infinity`: negative value
+    - `NaN`: Returned when Math functions fail
 - Math Details:
   - Order of operations (PEMDAS) still applies
   - All operations on numbers result in floating-point arithmetic.
@@ -96,15 +221,31 @@ I sorted these into types that I use frequently. I figured it be useful to study
     - `%`: Modulus operator still takes the remainder.
     - Since floating-point rules apply, be careful of high-precision results; you could lose precision.
 
-### null
+#### undefined
 
-### undefined
+From the MDN docs:
 
-### Object
+> A variable that has not been assigned a value is of type undefined. A method or statement also returns undefined if the variable that is being evaluated does not have an assigned value. A function returns undefined if a value was not returned
 
-### Symbol
+#### null
 
-### BigInt (New)
+> Definition: the intentional absence of any value.
+
+`null` is case-sensitive:
+
+- `null` does not equal `Null` or `NULL`, etc.
+
+#### Symbol (New)
+
+> Definition: A symbol is a primitive which cannot be recreated.
+
+<!-- TODO: Get more info and figure this stuff out. -->
+
+#### BigInt (New)
+
+> Definition: a built-in object that provides a way to represent whole numbers larger than 2^53
+
+<!-- TODO: Get more info and figure this stuff out. -->
 
 ## Scoping
 
@@ -239,9 +380,150 @@ These are a few of the reasons JavaScript developers should prefer `let`/`const`
 
 ## Program Structure
 
+### Control Flow
+
+#### If/else
+
+Standard logic conditional to control program flow.
+
+```js
+if() {
+  // do something
+} else if() {
+  // do something based on the 'conditon'
+} ... {
+
+} else {
+
+}
+
+```
+
+#### Switch
+
+A clean way of doing if / else chains.
+
+The below example accepts a Number as input, and can match that number to a specific "case" in the switch statement.
+
+Once the case is matched, you execute the code until the break.
+
+- If no `break` exists, then the code will "fall through" to the next `case`.
+- If no `case` is matched, you execute the `default` code.
+- If no `default` case exists, then the code will just bypass all logic in the `switch` like normal `if` execution.
+
+```js
+switch (numOfStudents) {
+  case 1:
+    // do something;
+    break;
+  case 2:
+  case 3:
+    // do something;
+    break;
+  default:
+  // do some default behavior.
+}
+```
+
+You can accept any value that can be equated in the parameter of the switch statement. For example:
+
+```js
+switch (fruittype) {
+  case 'Oranges':
+    console.log('Oranges are $0.59 a pound.');
+    break;
+  case 'Apples':
+    console.log('Apples are $0.32 a pound.');
+    break;
+  case 'Bananas':
+    console.log('Bananas are $0.48 a pound.');
+    break;
+  case 'Cherries':
+    console.log('Cherries are $3.00 a pound.');
+    break;
+  case 'Mangoes':
+    console.log('Mangoes are $0.56 a pound.');
+    break;
+  case 'Papayas':
+    console.log('Mangoes and papayas are $2.79 a pound.');
+    break;
+  default:
+    console.log('Sorry, we are out of ' + fruittype + '.');
+}
+```
+
+### Error Handling
+
+#### Try / Catch
+
+When you have a block of code that could be prone to errors / bugs, you might want to wrap it in a `try {}` block. However, every `try` block should have a proceeding `catch() {}` block along with it
+
+```js
+const getUserData (database) {
+  try {
+    const data = database.find('user');
+  } catch (err) {
+    console.log(err);
+  }
+}
+```
+
+If the code within the `try` block fails:
+
+- It immediately generates an `Error` object that breaks the normal programming flow.
+- This object will travel up the call stack until something resolves the error or the program crashes.
+
+The first thing that could resolve the error is the `Catch` block. In the code snippet above, `err` is the `Error` object that was generated when `database.find('user')` failed. All we do with the error is resolve it by logging it to the console. Since I don't know what to do with the error right now, logging it is the best I can do.
+
+#### Throw
+
+Continuing our example from above, a better solution to handling an error we don't know what to do with is to `throw` the error.
+
+```js
+const getUserData (database) {
+  try {
+    const data = database.find('user');
+  } catch (err) {
+    console.log(err);
+    throw err; // DEV: Now I added a throw expression.
+  }
+}
+```
+
+Now, my error handling allows whatever called `getUserData()` to deal with the error and logs the issue where it happened (better for debugging).
+
+**Just be careful!** If you never resolve the problem and continue to throw the error, your program will crash.
+
+#### Finally (new to JS)
+
+Continuing our example from above... If I had something that **MUST** be done after my `try` and `catch` blocks, it can be done in a `finally` block.
+
+```js
+const getUserData (database) {
+  try {
+    const data = database.find('user');
+  } catch (err) {
+    console.log(err);
+    throw err;
+  } finally {
+    console.log('Database operations: Finished'); // DEV: log when done.
+  }
+}
+```
+
+Now, in my `finally` block, I log when this function completes **NO MATTER WHAT**.
+
+If the `try` block is:
+
+- Successful: `try -> finally`
+- Unsuccessful: `try -> catch -> finally`
+
+**Just be careful!** If you have code that fails in the finally, there is no `catch` block to save you.
+
 ## Functions
 
 There are a few ways to create functions in JavaScript.
+### Function Expression
 
 ```js
 // or you can use let or var
@@ -255,6 +537,34 @@ function power(num, exp) {
   return num ** exp;
 }
 ```
+
+### Arrow Function
+
+- `this` binding: Do not have their own `this` binding.
+- `return`: Arrow functions have two forms and each affects the return of the function.
+  - Block body: Needs to have a return statement to return
+  - Concise body: Will implicitly return your last statement.
+- `constructors`: Cannot be used as constructors.
+  - `prototype`: Arrow functions do not have a prototype attatched.
+
+Block Body:
+
+```js
+const doSomething = (param1, param2) => {
+  // do something
+  return true;
+};
+```
+
+Concise Body:
+
+```js
+const doSomething = (param1, param2) => true;
+```
+
+**NOTE:** Arrow functions make poor object methods because
+
+### Higher-order Function
 
 In JavaScript, functions are _first-class citizens_.
 This means a function can be treated like any variable:
@@ -681,7 +991,7 @@ Teaching Instructions:
 
 ### The Secret Life of Objects
 
-TODO: Figure out what this is...
+<!-- TODO: Figure out what this is... -->
 
 ### Basics: Prototypes
 
@@ -808,99 +1118,23 @@ Ex: Everything in JS is an object. The `String` class **inherits** from the `Obj
 
 More advanced, can be covered later.
 
+## Functional Programming (FP)
 ### Exercise
 
 - [Stopwatch](https://youtu.be/PFmuCDHHpwk?t=3489)
 
 ## Bugs and Error Handling
 
-### Debugging
-
-### Error Handling
-
-#### Try / Catch
-
-When you have a block of code that could be prone to errors / bugs, you might want to wrap it in a `try {}` block. However, every `try` block should have a proceeding `catch() {}` block along with it
-
-```js
-const getUserData (database) {
-  try {
-    const data = database.find('user');
-  } catch (err) {
-    console.log(err);
-  }
-}
-```
-
-If the code within the `try` block fails:
-
-- It immediately generates an `Error` object that breaks the normal programming flow.
-- This object will travel up the call stack until something resolves the error or the program crashes.
-
-The first thing that could resolve the error is the `Catch` block. In the code snippet above, `err` is the `Error` object that was generated when `database.find('user')` failed. All we do with the error is resolve it by logging it to the console. Since I don't know what to do with the error right now, logging it is the best I can do.
-
-#### Throw
-
-Continuing our example from above, a better solution to handling an error we don't know what to do with is to `throw` the error.
-
-```js
-const getUserData (database) {
-  try {
-    const data = database.find('user');
-  } catch (err) {
-    console.log(err);
-    throw err; // DEV: Now I added a throw expression.
-  }
-}
-```
-
-Now, my error handling allows whatever called `getUserData()` to deal with the error and logs the issue where it happened (better for debugging).
-
-**Just be careful!** If you never resolve the problem and continue to throw the error, your program will crash.
-
-#### Finally (new to JS)
-
-Continuing our example from above... If I had something that **MUST** be done after my `try` and `catch` blocks, it can be done in a `finally` block.
-
-```js
-const getUserData (database) {
-  try {
-    const data = database.find('user');
-  } catch (err) {
-    console.log(err);
-    throw err;
-  } finally {
-    console.log('Database operations: Finished'); // DEV: log when done.
-  }
-}
-```
-
-Now, in my `finally` block, I log when this function completes **NO MATTER WHAT**.
-
-If the `try` block is:
-
-- Successful: `try -> finally`
-- Unsuccessful: `try -> catch -> finally`
-
-**Just be careful!** If you have code that fails in the finally, there is no `catch` block to save you.
+## Debugging
 
 ## ES6 Goodies (Mixed Bag)
 
-### Variable Identifiers
-
-#### Let
-
-#### Const
-
-#### Var
-
-### Spread / Rest Operator
-
-### Arrow Functions
-
-Covered in detail under the [Functions Section]()
-
-### Destructuring
+- Declaration:
+  - Let
+  - Const
+- Spread / Rest Operator
+- Arrow Functions: Covered in detail under the [Functions Section]()
+- Destructuring
 
 ## Modules
 
@@ -927,6 +1161,14 @@ Covered in detail under the [Functions Section]()
 
 ## Resources
 
+- [Weird History of JavaScript](https://www.youtube.com/watch?v=Sh6lK57Cuk4)
+- [Course Overview](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
+- [Truthy and Falsy](https://www.sitepoint.com/javascript-truthy-falsy/)
+- JS Basics:
+  - [EloquentJS - Values](https://eloquentjavascript.net/01_values.html)
+  - [MDN - Grammar and Types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types)
+  - [MDN - Expressions and Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators)
+  - [MDN - Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 ### JavaScript Basics
 
 - [EloquentJS - Values](https://eloquentjavascript.net/01_values.html)
@@ -942,7 +1184,9 @@ Covered in detail under the [Functions Section]()
 ### OOP
 
 - [Object Basics](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics)
-- [Prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
-- [Classes](https://www.javascriptjanuary.com/blog/es6-classes)
-- [Pillars of OOP](https://www.quora.com/What-are-the-4-pillars-of-OOPs)
-- [ES6 Classes](https://www.javascriptjanuary.com/blog/es6-classes)
+  - [Prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
+  - [Classes](https://www.javascriptjanuary.com/blog/es6-classes)
+  - [Pillars of OOP](https://www.quora.com/What-are-the-4-pillars-of-OOPs)
+  - [ES6 Classes](https://www.javascriptjanuary.com/blog/es6-classes)
+- Compatibility:
+  - [Chart by kangax](https://kangax.github.io/compat-table/es6/): massive lookup table of everything JS
