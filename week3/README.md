@@ -281,8 +281,8 @@ Referencing a function name _without_ parenthesis allows us to use the function 
 We can even pass it into other functions like so
 
 ```js
-function wrapper(func) {
-  func(); // Execute the function passed in
+function wrapper(callback) {
+  callback(); // Execute the function passed in
 }
 
 function celebrate() {
@@ -293,7 +293,20 @@ wrapper(celebrate);
 // → 🎉
 ```
 
-This seems silly now, but this will be very useful when we talk about callbacks—a very important part of JS.
+I can also pass an anonymous function in as my callback:
+
+```js
+function wrapper(callback) {
+  callback(); // Execute the function passed in
+}
+
+wrapper(function() {
+  console.log(`Woooo!`);
+});
+// → Woooo!
+```
+
+This seems silly now, but this will be very useful when we talk more about callbacks—a very important part of JS.
 
 ### Optional arguments
 
@@ -303,11 +316,11 @@ The following code is allowed and executes without any problem:
 function square(x) {
   return x * x;
 }
-console.log(square(4, true, "hedgehog"));
+console.log(square(4, true, "random string"));
 // → 16
 ```
 
-We defined `square` with only one parameter. Yet when we call it with three, the language doesn’t complain. It ignores the extra arguments and computes the square of the first one.
+We defined `square` with only one parameter, yet when we call it with three the language doesn’t complain. It ignores the extra arguments and computes the square of the first one.
 
 JavaScript is extremely lax about the number of arguments you pass to a function. If you pass too many, the extra ones are ignored. If you pass too few, the missing parameters get assigned the value `undefined`.
 
