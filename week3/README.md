@@ -1002,7 +1002,78 @@ console.log(counter);
 
 There is a problem with the solution above: Any code on the page can change the counter without calling `add`.
 
-The counter should be local to the `add` function. In OO terms, this would be _encapsulation_.
+The counter should be local to the `add` function. In OO terms, this would be _encapsulation_ or _private_ data.
+
+A naive solution:
+
+```js
+function add() {
+  let counter = 0;
+  counter += 1;
+  return counter;
+}
+
+add();
+add();
+console.log(add());
+// → 1
+```
+
+Obviously this won't work because `counter` is redefined every time we run `add`.
+We need a way to define `counter` once _and_ have a publicly available function that can access our private `counter`.
+
+We need to take advantage of the _lexical environment_:
+
+```js
+function makeCounter() {
+  // define counter (only scoped to this environment)
+  let counter = 0;
+  // notice I return an actual function
+  return () => {
+    counter += 1;
+    return counter;
+  };
+}
+
+const add = makeCounter();
+
+add();
+add();
+console.log(add());
+// → 3
+```
+
+Lexical environment simply refers to the scope of where variables are written.
+Remember, this is how JavaScript determines which variables can "see" one another.
+
+In our above example, `counter` shares a lexical environment with the anonymous function we return from `makeCounter` (which we eventually call `add`).
+This allows `add` to access and modify `counter` without the variable leaking into the global scope.
+
+**One other interesting example:**
+Closures are also great for function factories
+
+```js
+function makeAdder(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+
+const add5 = makeAdder(5);
+const add10 = makeAdder(10);
+
+console.log(add5(2)); // → 7
+console.log(add10(2)); // → 12
+```
+
+Closures are one of the most confusing concepts in JavaScript.
+Don't worry if you don't perfectly get it yet.
+Just make sure you understand that
+
+- closures allow for private data encapsulation
+- closures can be used as function factories
+
+If you would like to learn more about closures, check out [MDN's extensive documentation on the subject](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures).
 
 ## Arrays
 
