@@ -17,8 +17,6 @@
   - [Control Flow](#Control-Flow)
 - [Functions](#Functions)
   - [Function Expression](#Function-Expression)
-  - [Arrow Function](#Arrow-Function)
-  - [Higher-order Function](#Higher-order-Function)
   - [Optional arguments](#Optional-arguments)
   - [Default arguments](#Default-arguments)
   - [`arguments` keyword and rest parameters](#arguments-keyword-and-rest-parameters)
@@ -606,34 +604,6 @@ function power(num, exp) {
 }
 ```
 
-### Arrow Function
-
-- `this` binding: Do not have their own `this` binding.
-- `return`: Arrow functions have two forms and each affects the return of the function.
-  - Block body: Needs to have a return statement to return
-  - Concise body: Will implicitly return your last statement.
-- `constructors`: Cannot be used as constructors.
-  - `prototype`: Arrow functions do not have a prototype attatched.
-
-Block Body:
-
-```js
-const doSomething = (param1, param2) => {
-  // do something
-  return true;
-};
-```
-
-Concise Body:
-
-```js
-const doSomething = (param1, param2) => true;
-```
-
-**NOTE:** Arrow functions make poor object methods because
-
-### Higher-order Function
-
 In JavaScript, functions are _first-class citizens_.
 This means a function can be treated like any variable:
 you can use it in arbitrary expressions, not just call it.
@@ -1107,7 +1077,7 @@ So we can make, access, modify, and navigate collections of things like so:
 
 ```js
 const coll = []; // Empty array construction
-const coll2 = ['zero', 'one', 'two']; // Initialize an array with values
+const coll2 = ["zero", "one", "two"]; // Initialize an array with values
 
 console.log(coll2); // ➝ ['zero', 'one', 'two']
 console.log(coll2[0]); // ➝ 'zero'
@@ -1122,7 +1092,7 @@ console.log(coll2.length); // ➝ 3
 2. Each of those elements in an array can be of any type.
 
 ```js
-const mixedBag = ['hello', 3, `friends`, true, new Friend()];
+const mixedBag = ["hello", 3, `friends`, true, new Friend()];
 // This type of array is allowed in JS
 ```
 
