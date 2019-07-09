@@ -24,6 +24,7 @@
   - [`arguments` keyword and rest parameters](#arguments-keyword-and-rest-parameters)
   - [`this` keyword](#this-keyword)
   - [Arrow functions](#Arrow-functions)
+  - [Callbacks and higher-order functions](#Callbacks-and-higher-order-functions)
   - [Closures](#Closures)
 - [Arrays](#Arrays)
   - [Iterators](#Iterators)
@@ -197,17 +198,17 @@ The difference between `let` and `const` is that a variable declared with `let` 
 let myLetStr = "First it's this";
 myLetStr = "Now it's this"; // ✅
 
-const myConstStr = 'Hello';
-myConstStr = 'Goodbye'; // ❌ TypeError: Assignment to constant variable
+const myConstStr = "Hello";
+myConstStr = "Goodbye"; // ❌ TypeError: Assignment to constant variable
 ```
 
 Note that variables defined with `const` are not technically immutable.
 We can actually mutate the data as long as we don't reassign the variable.
 
 ```js
-const dogs = ['golden retriever', 'dalmatian'];
-dogs.push('chihuahua'); // ✅
-dogs = ['husky']; // ❌ TypeError: Assignment to constant variable
+const dogs = ["golden retriever", "dalmatian"];
+dogs.push("chihuahua"); // ✅
+dogs = ["husky"]; // ❌ TypeError: Assignment to constant variable
 ```
 
 We should prefer to use `const` wherever possible in order to reduce confusion with reassignment.
@@ -229,7 +230,7 @@ Only `var` and `function` declarations are hoisted.
 One of the advantages of this is that it allows you to use a function before you declare it in your code.
 
 ```js
-catName('Chloe'); // ✅
+catName("Chloe"); // ✅
 
 function catName(name) {
   console.log("My cat's name is " + name);
@@ -239,7 +240,7 @@ function catName(name) {
 We can also do this with `var` declarations:
 
 ```js
-myCat = 'Chloe';
+myCat = "Chloe";
 console.log(myCat); // ✅
 var myCat;
 ```
@@ -248,7 +249,7 @@ For all intents and purposes the interpreter sees
 
 ```js
 var myCat;
-myCat = 'Chloe';
+myCat = "Chloe";
 console.log(myCat); // ✅
 ```
 
@@ -274,7 +275,7 @@ This is one of the reasons `let` and `const` were added to the spec in ES6.
 Notice:
 
 ```js
-myCat = 'Chloe'; // ❌ ReferenceError: myCat is not defined
+myCat = "Chloe"; // ❌ ReferenceError: myCat is not defined
 console.log(myCat);
 let myCat;
 ```
@@ -309,7 +310,7 @@ Strings can be more than just normal language characters. You can use most Unico
 
 ```js
 // Using the "new line" escaped character
-console.log('Something\nFun');
+console.log("Something\nFun");
 // ➝ Something
 // ➝ Fun
 ```
@@ -325,7 +326,7 @@ Overloaded string operator:
 - `+`: Concatenates two strings into one. Usually the plus sign is an addition operator, but in strings it is the "combining" operator.
 
 ```js
-const str = 'My friends';
+const str = "My friends";
 
 console.log(str.length);
 // ➝ 10 (includes whitespace)
@@ -334,7 +335,7 @@ const firstCharacter = str[0];
 console.log(firstCharacter);
 // ➝ M
 
-const str2 = 'My friends';
+const str2 = "My friends";
 console.log(str == str2);
 // ➝ true
 
@@ -506,26 +507,26 @@ You can accept any value that can be equated in the parameter of the switch stat
 
 ```js
 switch (fruitType) {
-  case 'Oranges':
-    console.log('Oranges are $0.59 a pound.');
+  case "Oranges":
+    console.log("Oranges are $0.59 a pound.");
     break;
-  case 'Apples':
-    console.log('Apples are $0.32 a pound.');
+  case "Apples":
+    console.log("Apples are $0.32 a pound.");
     break;
-  case 'Bananas':
-    console.log('Bananas are $0.48 a pound.');
+  case "Bananas":
+    console.log("Bananas are $0.48 a pound.");
     break;
-  case 'Cherries':
-    console.log('Cherries are $3.00 a pound.');
+  case "Cherries":
+    console.log("Cherries are $3.00 a pound.");
     break;
-  case 'Mangoes':
-    console.log('Mangoes are $0.56 a pound.');
+  case "Mangoes":
+    console.log("Mangoes are $0.56 a pound.");
     break;
-  case 'Papayas':
-    console.log('Mangoes and papayas are $2.79 a pound.');
+  case "Papayas":
+    console.log("Mangoes and papayas are $2.79 a pound.");
     break;
   default:
-    console.log('Sorry, we are out of ' + fruitType + '.');
+    console.log("Sorry, we are out of " + fruitType + ".");
 }
 ```
 
@@ -553,14 +554,14 @@ if (document.all)
 If the first object of a logical "And" operator `&&` in the expression is _falsy_, then that object will be returned.
 
 ```js
-let pet = false && 'dog';
+let pet = false && "dog";
 // ➝ false
 ```
 
 If the first object of a logical "Or" operator `||` in the expression is _falsy_, then the second object will be returned.
 
 ```js
-let pet = false || 'dog';
+let pet = false || "dog";
 // ➝ dog
 ```
 
@@ -643,7 +644,7 @@ Similarly, a variable that holds a function is still just a regular variable and
 
 ```js
 let launchMissiles = function() {
-  missileSystem.launch('now');
+  missileSystem.launch("now");
 };
 
 if (safeMode) {
@@ -665,7 +666,7 @@ function wrapper(callback) {
 }
 
 function celebrate() {
-  console.log('🎉');
+  console.log("🎉");
 }
 
 wrapper(celebrate);
@@ -695,7 +696,7 @@ The following code is allowed and executes without any problem:
 function square(x) {
   return x * x;
 }
-console.log(square(4, true, 'random string'));
+console.log(square(4, true, "random string"));
 // → 16
 ```
 
@@ -766,7 +767,7 @@ function showMyFriends() {
   }
 }
 
-showMyFriends('Kevin', 'Miles');
+showMyFriends("Kevin", "Miles");
 // → I have so many friends!
 // → My best friend is Kevin
 ```
@@ -789,7 +790,7 @@ function showMeAndMyFriends(me, ...friends) {
   }
 }
 
-showMeAndMyFriends('Andrew', 'Kevin', 'Miles');
+showMeAndMyFriends("Andrew", "Kevin", "Miles");
 // → I have so many friends!
 // → My best friend is Kevin
 ```
@@ -811,10 +812,10 @@ If the function is a method of an object, `this` will refer to that object.
 
 ```js
 const dog = {
-  name: 'Spots',
+  name: "Spots",
   whoAmI() {
     console.log(this);
-  },
+  }
 };
 
 dog.whoAmI();
@@ -912,7 +913,7 @@ const person = {
       console.log(`I am ${this.age} years old`);
       this.age++;
     }, 1000);
-  },
+  }
 };
 
 person.growUp();
@@ -933,7 +934,7 @@ const person = {
       // console.log(`I am ${this.age} years old`);
       // this.age++;
     }, 1000);
-  },
+  }
 };
 
 person.growUp();
@@ -965,7 +966,7 @@ const person = {
       console.log(`I am ${this.age} years old`);
       this.age++;
     }, 1000);
-  },
+  }
 };
 
 person.growUp();
@@ -973,6 +974,25 @@ person.growUp();
 // → I am 1 years old
 // etc
 ```
+
+### Callbacks and higher-order functions
+
+In JavaScript, functions are objects. Because of this, functions can take functions as arguments, and can be returned by other functions. Functions that do this are called _higher-order functions_. Any function that is passed as an argument is called a _callback_ function.
+
+These are used often in asynchronous programming as well as a number of array functions.
+
+For example, `setTimeout` is an asynchronous higher-order function that accepts a callback
+
+```js
+setTimeout(() => {
+  console.log("Heyyyyy");
+}, 1000);
+// → Heyyyyy (after 1 second)
+```
+
+Callbacks are used in the browser as well.
+That is how we handle events.
+We will see a lot of this with React.
 
 ### Closures
 
@@ -1117,7 +1137,7 @@ obj3 = MyObject();
 function MyConstructor(name) {
   this.name = name;
 }
-obj4 = new MyConstructor('bob');
+obj4 = new MyConstructor("bob");
 ```
 
 Teaching Instructions:
@@ -1134,7 +1154,7 @@ Traditionally,
 When you make a string:
 
 ```js
-const str = 'hello';
+const str = "hello";
 ```
 
 Teaching instructions:
@@ -1164,7 +1184,7 @@ class Pet {
   }
 }
 
-const dog = new Pet('Max');
+const dog = new Pet("Max");
 ```
 
 We are not just limited to data as well; we can supply methods to manipulate said data.
@@ -1211,8 +1231,8 @@ class Dog extends Pet {
   }
 }
 
-const myDog = new Dog('Mike');
-myDog.doTrick('jump');
+const myDog = new Dog("Mike");
+myDog.doTrick("jump");
 
 // Output: I can jump. Watch this!
 ```
