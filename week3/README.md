@@ -26,8 +26,6 @@
   - [Arrow functions](#Arrow-functions)
   - [Closures](#Closures)
 - [Arrays](#Arrays)
-  - [Iterators](#Iterators)
-  - [Tuples](#Tuples)
 - [OOP (Object Oriented Programming)](#OOP-Object-Oriented-Programming)
   - [Why do we care?](#Why-do-we-care)
   - [Basics: Objects](#Basics-Objects)
@@ -1075,11 +1073,42 @@ Just make sure you understand that
 
 If you would like to learn more about closures, check out [MDN's extensive documentation on the subject](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures).
 
-## Arrays
+## [Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
-### Iterators
+> Arrays are list-like objects whose prototype has methods to perform traversal and mutation operations. Neither the length of a JavaScript array nor the types of its elements are fixed. Since an array's length can change at any time, and data can be stored at non-contiguous locations in the array, JavaScript arrays are not guaranteed to be dense; this depends on how the programmer chooses to use them.
+>
+> -- MDN
 
-### Tuples
+Let us try to break this apart little by little.
+
+"A list-like structure" is something that can hold values together and "whose prototype has methods to perform traversal and mutation operations" means that we can navigate, access, and change elements in this list with built in methods.
+
+So we can make, access, modify, and navigate collections of things like so:
+
+```js
+const coll = []; // Empty array construction
+const coll2 = ['zero', 'one', 'two']; // Initialize an array with values
+
+console.log(coll2); // ➝ ['zero', 'one', 'two']
+console.log(coll2[0]); // ➝ 'zero'
+console.log(coll2.length); // ➝ 3
+```
+
+[Additional array related functionality](https://github.com/talent-path-la/javascript-review/blob/master/arrays.js)
+
+"Neither the length of a JavaScript array nor the types of its elements are fixed." This is a huge feature / pain depending on how you look at it. JS basically takes away the insurance of two separate things when using raw arrays:
+
+1. You don't know if sequential array elements will be next to each other in memory at any given time.
+2. Each of those elements in an array can be of any type.
+
+```js
+const mixedBag = ['hello', 3, `friends`, true, new Friend()];
+// This type of array is allowed in JS
+```
+
+"Since an array's length can change at any time, and data can be stored at non-contiguous locations in the array, JavaScript arrays are not guaranteed to be dense; this depends on how the programmer chooses to use them."
+
+**NOTE**: Arrays can grow and shrink to any size determined by the number of elements you have within. So, be careful of how much you put into an array. A _sparce_ (non-dense) array does not care how many zero values it places between elements; it will take up as much space as you let it.
 
 ## OOP (Object Oriented Programming)
 
