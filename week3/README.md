@@ -13,7 +13,6 @@
 - [Types](#Types)
   - [Object](#Object)
   - [Primitives](#Primitives)
-- [Operations](#Operations)
 - [Program Structure](#Program-Structure)
   - [Control Flow](#Control-Flow)
 - [Functions](#Functions)
@@ -26,15 +25,12 @@
   - [`this` keyword](#this-keyword)
   - [Arrow functions](#Arrow-functions)
   - [Closures](#Closures)
-  - [Higher-order](#Higher-order)
-  - [Callbacks](#Callbacks)
 - [Arrays](#Arrays)
   - [Iterators](#Iterators)
   - [Tuples](#Tuples)
 - [OOP (Object Oriented Programming)](#OOP-Object-Oriented-Programming)
   - [Why do we care?](#Why-do-we-care)
   - [Basics: Objects](#Basics-Objects)
-  - [The Secret Life of Objects](#The-Secret-Life-of-Objects)
   - [Basics: Prototypes](#Basics-Prototypes)
   - [New-ish: ES6 Classes](#New-ish-ES6-Classes)
   - [Theory of OOP](#Theory-of-OOP)
@@ -45,10 +41,13 @@
 - [ES6 Goodies (Mixed Bag)](#ES6-Goodies-Mixed-Bag)
 - [Modules](#Modules)
 - [Asynchronous Programming](#Asynchronous-Programming)
-  - [Callbacks](#Callbacks-1)
+  - [Callbacks](#Callbacks)
   - [Promises](#Promises)
   - [Async/Await](#AsyncAwait)
-  - [Error Handling](#Error-Handling)
+- [Error Handling](#Error-Handling)
+  - [Try / Catch](#Try--Catch)
+  - [Throw](#Throw)
+  - [Finally (New)](#Finally-New)
 - [Jest](#Jest)
   - [Unit](#Unit)
   - [Integration](#Integration)
@@ -198,17 +197,17 @@ The difference between `let` and `const` is that a variable declared with `let` 
 let myLetStr = "First it's this";
 myLetStr = "Now it's this"; // ✅
 
-const myConstStr = "Hello";
-myConstStr = "Goodbye"; // ❌ TypeError: Assignment to constant variable
+const myConstStr = 'Hello';
+myConstStr = 'Goodbye'; // ❌ TypeError: Assignment to constant variable
 ```
 
 Note that variables defined with `const` are not technically immutable.
 We can actually mutate the data as long as we don't reassign the variable.
 
 ```js
-const dogs = ["golden retriever", "dalmatian"];
-dogs.push("chihuahua"); // ✅
-dogs = ["husky"]; // ❌ TypeError: Assignment to constant variable
+const dogs = ['golden retriever', 'dalmatian'];
+dogs.push('chihuahua'); // ✅
+dogs = ['husky']; // ❌ TypeError: Assignment to constant variable
 ```
 
 We should prefer to use `const` wherever possible in order to reduce confusion with reassignment.
@@ -230,7 +229,7 @@ Only `var` and `function` declarations are hoisted.
 One of the advantages of this is that it allows you to use a function before you declare it in your code.
 
 ```js
-catName("Chloe"); // ✅
+catName('Chloe'); // ✅
 
 function catName(name) {
   console.log("My cat's name is " + name);
@@ -240,7 +239,7 @@ function catName(name) {
 We can also do this with `var` declarations:
 
 ```js
-myCat = "Chloe";
+myCat = 'Chloe';
 console.log(myCat); // ✅
 var myCat;
 ```
@@ -249,7 +248,7 @@ For all intents and purposes the interpreter sees
 
 ```js
 var myCat;
-myCat = "Chloe";
+myCat = 'Chloe';
 console.log(myCat); // ✅
 ```
 
@@ -275,7 +274,7 @@ This is one of the reasons `let` and `const` were added to the spec in ES6.
 Notice:
 
 ```js
-myCat = "Chloe"; // ❌ ReferenceError: myCat is not defined
+myCat = 'Chloe'; // ❌ ReferenceError: myCat is not defined
 console.log(myCat);
 let myCat;
 ```
@@ -302,58 +301,137 @@ Javascript has an `Object` type that wraps all things during execution. This wil
 
 #### String
 
-- Properties:
+Strings are used all the time and frequently throughout programming. Any type of word, message, love letter, etc. consists of a string.
 
-  - Represents text
-  - Array-like structure of characters
-  - Special characters can be escaped with a `\` (backslash)
+A string is really just a collection of characters. In most programming languages, including JavaScript, strings are highly similar to arrays.
 
-  ```js
-  // Using the "new line" escaped character
-  console.log("Something\nFun");
-  /* Expected Output:
-   * Something
-   * Fun
-   */
-  ```
+Strings can be more than just normal language characters. You can use most Unicode characters and inline string operations with a `\` (backslash) followed by the correct code
 
-- Basic Operations:
-  - `+`: Concatenates two strings into one
-  - There is a ton of operations on strings. Please refer to the [MDN - Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) section of the docs to learn more.
+```js
+// Using the "new line" escaped character
+console.log('Something\nFun');
+// ➝ Something
+// ➝ Fun
+```
+
+Common String operations are:
+
+- Checking the length of a string
+- Accessing a character in the string
+- Comparing strings
+
+Overloaded string operator:
+
+- `+`: Concatenates two strings into one. Usually the plus sign is an addition operator, but in strings it is the "combining" operator.
+
+```js
+const str = 'My friends';
+
+console.log(str.length);
+// ➝ 10 (includes whitespace)
+
+const firstCharacter = str[0];
+console.log(firstCharacter);
+// ➝ M
+
+const str2 = 'My friends';
+console.log(str == str2);
+// ➝ true
+
+const str3 = str + str2;
+console.log(str3);
+// ➝ My Friends My Friends
+```
+
+There is a ton of operations on strings. Please refer to the [MDN - Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) section of the docs to learn more.
 
 #### Boolean
 
-- Properties:
-  - true of false
+These types are your standard true and false values. JavaScript has `true` and `false` keywords. However, JavaScript also uses _truthy_ and _falsy_ values, as well, to cover all of the other types during execution. _Truthy_ and _Falsy_ will be covered later in the **Program Structure** section.
 
-Make sure to include information about [Truthy and Falsy](https://www.sitepoint.com/javascript-truthy-falsy/). It is important to know that JavaScript has implicit type coersion to ensure a flexible runtime.
+If you want to convert an object to be exactly `true` or `false`, you can use the `!!` (double bang) operator.
+
+```js
+const bool = true;
+let pet = new Animal();
+console.log(bool == !!pet);
+// ➝ true
+```
 
 #### Number
 
-- Properties:
-  - 64-bit value
-  - Integer or float
-  - Positive or negative
-  - Special `Number` key words:
-    - `Infinity`: behaves an acts like infinity
-    - `-Infinity`: negative value
-    - `NaN`: Returned when Math functions fail
-- Math Details:
-  - Order of operations (PEMDAS) still applies
-  - All operations on numbers result in floating-point arithmetic.
-    - `/`: Standard division does not truncate decimal values; it maintains floating point precision.
-    - `%`: Modulus operator still takes the remainder.
-    - Since floating-point rules apply, be careful of high-precision results; you could lose precision.
+Numbers are your bread and butter to anything math related. Counting in loops, adding two numbers, finding the volume of a cube? The Number type can solve all of that because it covers integers and floating-point values.
+
+In JavaScript, there is no distinction between:
+
+- int
+- short
+- long
+- float
+- double
+- etc.
+
+Numbers are 64-bit values. Most of the bits are used to maintain the value of the number itself. However, some bits go into maintaining the sign and/or decimal placement in the number (you won't get 64 bits worth of value storage). Since floating-point rules apply, be careful of high-precision results; you could lose precision.
+
+##### Infinity
+
+In order to deal with numbers that overflow normal limits of storage, Special `Number` type key words:
+
+- `Infinity`: behaves an acts like infinity
+- `-Infinity`: negative of `Infinity`
+
+```js
+// ============== Infinity ===================
+console.log(Infinity); // ➝ Infinity
+console.log(Infinity + 1); // ➝ Infinity
+console.log(Math.pow(10, 1000)); // ➝ Infinity
+console.log(Math.log(0)); // ➝ -Infinity
+console.log(1 / Infinity); // ➝ 0
+```
+
+##### NaN
+
+`NaN`: Represents "Not a Number". Returned when Math functions fail
+
+> NaN compares unequal (via ==, !=, ===, and !==) to any other value -- including to another NaN value. Use Number.isNaN() or isNaN() to most clearly determine whether a value is NaN. Or perform a self-comparison: NaN, and only NaN, will compare unequal to itself.
+>
+> -- MDN
+
+```js
+// =============== NaN =======================
+NaN === NaN; // ➝ false
+Number.NaN === NaN; // ➝ false
+isNaN(NaN); // ➝ true
+isNaN(Number.NaN); // ➝ true
+
+function valueIsNaN(num) {
+  return num !== num;
+}
+valueIsNaN(1); // ➝ false
+valueIsNaN(NaN); // ➝ true
+valueIsNaN(Number.NaN); // ➝ true
+```
+
+##### Math
+
+Math Details:
+
+- Order of operations (PEMDAS) still applies
+- All operations on numbers result in floating-point arithmetic.
+  - `/`: Standard division does not truncate decimal values; it maintains floating point precision.
+  - `%`: Modulus operator still takes the remainder.
 
 #### undefined
 
-From the MDN docs:
-
 > A variable that has not been assigned a value is of type undefined. A method or statement also returns undefined if the variable that is being evaluated does not have an assigned value. A function returns undefined if a value was not returned
+>
+> -- MDN
 
 #### null
 
-> Definition: the intentional absence of any value.
+> The intentional absence of any value.
+>
+> -- MDN
 
 `null` is case-sensitive:
 
@@ -362,16 +440,20 @@ From the MDN docs:
 #### Symbol (New)
 
 > Definition: A symbol is a primitive which cannot be recreated.
+>
+> -- MDN
 
-<!-- TODO: Get more info and figure this stuff out. -->
+Symbols are primarily used for Object keys to ensure that each key is unique.
 
 #### BigInt (New)
 
 > Definition: a built-in object that provides a way to represent whole numbers larger than 2^53
+>
+> -- MDN
 
-<!-- TODO: Get more info and figure this stuff out. -->
+Worried about overflowing a Number primitive?? Worry no more!
 
-## Operations
+BigInt values can give you as much space as you want / need by dynamically allocating memory space for those massive numbers.
 
 ## Program Structure
 
@@ -423,28 +505,87 @@ switch (numOfStudents) {
 You can accept any value that can be equated in the parameter of the switch statement. For example:
 
 ```js
-switch (fruittype) {
-  case "Oranges":
-    console.log("Oranges are $0.59 a pound.");
+switch (fruitType) {
+  case 'Oranges':
+    console.log('Oranges are $0.59 a pound.');
     break;
-  case "Apples":
-    console.log("Apples are $0.32 a pound.");
+  case 'Apples':
+    console.log('Apples are $0.32 a pound.');
     break;
-  case "Bananas":
-    console.log("Bananas are $0.48 a pound.");
+  case 'Bananas':
+    console.log('Bananas are $0.48 a pound.');
     break;
-  case "Cherries":
-    console.log("Cherries are $3.00 a pound.");
+  case 'Cherries':
+    console.log('Cherries are $3.00 a pound.');
     break;
-  case "Mangoes":
-    console.log("Mangoes are $0.56 a pound.");
+  case 'Mangoes':
+    console.log('Mangoes are $0.56 a pound.');
     break;
-  case "Papayas":
-    console.log("Mangoes and papayas are $2.79 a pound.");
+  case 'Papayas':
+    console.log('Mangoes and papayas are $2.79 a pound.');
     break;
   default:
-    console.log("Sorry, we are out of " + fruittype + ".");
+    console.log('Sorry, we are out of ' + fruitType + '.');
 }
+```
+
+#### Falsy
+
+> A falsy value is a value that is considered false when encountered in a Boolean context. JavaScript uses Type Conversion to coerce any value to a Boolean in contexts that require it, such as conditionals and loops.
+
+Essentially, JavaScript will attempt to resolve the value of anything that is not `false` to be _falsy_ in order to continue with operation.
+
+Example falsy values:
+
+```js
+if (false)
+if (null)
+if (undefined)
+if (0)
+if (0n)
+if (NaN)
+if ('')
+if ("")
+if (``)
+if (document.all)
+```
+
+If the first object of a logical "And" operator `&&` in the expression is _falsy_, then that object will be returned.
+
+```js
+let pet = false && 'dog';
+// ➝ false
+```
+
+If the first object of a logical "Or" operator `||` in the expression is _falsy_, then the second object will be returned.
+
+```js
+let pet = false || 'dog';
+// ➝ dog
+```
+
+#### Truthy
+
+> In JavaScript, a truthy value is a value that is considered true when encountered in a Boolean context. All values are truthy unless they are defined as falsy (i.e., except for false, 0, "", null, undefined, and NaN).
+
+Truthy values are essentially the opposite to _falsy_ values. Each of these values will result in a `true` during runtime.
+
+Example truthy values:
+
+```js
+if (true)
+if ({})
+if ([])
+if (42)
+if ("0")
+if ("false")
+if (new Date())
+if (-42)
+if (12n)
+if (3.14)
+if (-3.14)
+if (Infinity)
+if (-Infinity)
 ```
 
 ## Functions
@@ -502,7 +643,7 @@ Similarly, a variable that holds a function is still just a regular variable and
 
 ```js
 let launchMissiles = function() {
-  missileSystem.launch("now");
+  missileSystem.launch('now');
 };
 
 if (safeMode) {
@@ -524,7 +665,7 @@ function wrapper(callback) {
 }
 
 function celebrate() {
-  console.log("🎉");
+  console.log('🎉');
 }
 
 wrapper(celebrate);
@@ -554,7 +695,7 @@ The following code is allowed and executes without any problem:
 function square(x) {
   return x * x;
 }
-console.log(square(4, true, "random string"));
+console.log(square(4, true, 'random string'));
 // → 16
 ```
 
@@ -625,7 +766,7 @@ function showMyFriends() {
   }
 }
 
-showMyFriends("Kevin", "Miles");
+showMyFriends('Kevin', 'Miles');
 // → I have so many friends!
 // → My best friend is Kevin
 ```
@@ -648,7 +789,7 @@ function showMeAndMyFriends(me, ...friends) {
   }
 }
 
-showMeAndMyFriends("Andrew", "Kevin", "Miles");
+showMeAndMyFriends('Andrew', 'Kevin', 'Miles');
 // → I have so many friends!
 // → My best friend is Kevin
 ```
@@ -670,10 +811,10 @@ If the function is a method of an object, `this` will refer to that object.
 
 ```js
 const dog = {
-  name: "Spots",
+  name: 'Spots',
   whoAmI() {
     console.log(this);
-  }
+  },
 };
 
 dog.whoAmI();
@@ -771,7 +912,7 @@ const person = {
       console.log(`I am ${this.age} years old`);
       this.age++;
     }, 1000);
-  }
+  },
 };
 
 person.growUp();
@@ -792,7 +933,7 @@ const person = {
       // console.log(`I am ${this.age} years old`);
       // this.age++;
     }, 1000);
-  }
+  },
 };
 
 person.growUp();
@@ -824,7 +965,7 @@ const person = {
       console.log(`I am ${this.age} years old`);
       this.age++;
     }, 1000);
-  }
+  },
 };
 
 person.growUp();
@@ -863,10 +1004,6 @@ There is a problem with the solution above: Any code on the page can change the 
 
 The counter should be local to the `add` function. In OO terms, this would be _encapsulation_.
 
-### Higher-order
-
-### Callbacks
-
 ## Arrays
 
 ### Iterators
@@ -879,7 +1016,7 @@ The counter should be local to the `add` function. In OO terms, this would be _e
 
 JavaScript is full of objects. In fact, you could go so far to say that _EVERYTHING_ in JavaScript is an object.
 
-_If people feel skeptical, tell them to wait for the prototype chain part_
+> If people feel skeptical, tell them to wait for the prototype chain part...
 
 We want to be able to make something that has data and manipulate that data in an organized, scalable, extensible way.
 
@@ -909,17 +1046,13 @@ obj3 = MyObject();
 function MyConstructor(name) {
   this.name = name;
 }
-obj4 = new MyConstructor("bob");
+obj4 = new MyConstructor('bob');
 ```
 
 Teaching Instructions:
 
 - Start attaching things to the object and showing how JavaScript is a dynamic language.
 - Show that variables and functions being values in a property.
-
-### The Secret Life of Objects
-
-<!-- TODO: Figure out what this is... -->
 
 ### Basics: Prototypes
 
@@ -930,7 +1063,7 @@ Traditionally,
 When you make a string:
 
 ```js
-const str = "hello";
+const str = 'hello';
 ```
 
 Teaching instructions:
@@ -947,6 +1080,8 @@ And this is what it looks like when you investigate the String \_proto\_ that is
 
 ![String prototype](console-string-prototype.png)
 
+Standard function expressions are used to make objects because they have a prototype attached to them. However, arrow functions are not useful as constructors. Arrow functions do not bind to its own `this` variable and therefore make terrible constructors.
+
 ### New-ish: ES6 Classes
 
 A stylistic wrapper to make OOP easier to use is `class` syntax. A class is a template that can be used to construct objects. If you are more familiar with C-based languages, this will feel right at home.
@@ -958,7 +1093,7 @@ class Pet {
   }
 }
 
-const dog = new Pet("Max");
+const dog = new Pet('Max');
 ```
 
 We are not just limited to data as well; we can supply methods to manipulate said data.
@@ -1005,8 +1140,8 @@ class Dog extends Pet {
   }
 }
 
-const myDog = new Dog("Mike");
-myDog.doTrick("jump");
+const myDog = new Dog('Mike');
+myDog.doTrick('jump');
 
 // Output: I can jump. Watch this!
 ```
@@ -1017,10 +1152,14 @@ Inheritance can also be used with the `extends` key word. Classes the inherit mu
 
 Four pillars of OOP:
 
+![Four pillars of OOP](https://cdn-images-1.medium.com/max/1200/1*137Rnofd7QBjXu9zUd6MXQ.png)
+
+<!--
 - Abstraction
 - Encapsulation
 - Inheritance
 - Polymorphism
+-->
 
 #### Abstraction
 
@@ -1075,9 +1214,9 @@ More advanced, can be covered later.
 
 ### Async/Await
 
-### Error Handling
+## Error Handling
 
-#### Try / Catch
+### Try / Catch
 
 When you have a block of code that could be prone to errors / bugs, you might want to wrap it in a `try {}` block. However, every `try` block should have a proceeding `catch() {}` block along with it
 
@@ -1098,7 +1237,7 @@ If the code within the `try` block fails:
 
 The first thing that could resolve the error is the `Catch` block. In the code snippet above, `err` is the `Error` object that was generated when `database.find('user')` failed. All we do with the error is resolve it by logging it to the console. Since I don't know what to do with the error right now, logging it is the best I can do.
 
-#### Throw
+### Throw
 
 Continuing our example from above, a better solution to handling an error we don't know what to do with is to `throw` the error.
 
@@ -1117,7 +1256,7 @@ Now, my error handling allows whatever called `getUserData()` to deal with the e
 
 **Just be careful!** If you never resolve the problem and continue to throw the error, your program will crash.
 
-#### Finally (new to JS)
+### Finally (New)
 
 Continuing our example from above... If I had something that **MUST** be done after my `try` and `catch` blocks, it can be done in a `finally` block.
 
