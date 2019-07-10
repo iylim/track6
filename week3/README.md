@@ -783,7 +783,7 @@ const dog = {
   name: "Spots",
   whoAmI() {
     console.log(this);
-  },
+  }
 };
 
 dog.whoAmI();
@@ -881,7 +881,7 @@ const person = {
       console.log(`I am ${this.age} years old`);
       this.age++;
     }, 1000);
-  },
+  }
 };
 
 person.growUp();
@@ -902,7 +902,7 @@ const person = {
       // console.log(`I am ${this.age} years old`);
       // this.age++;
     }, 1000);
-  },
+  }
 };
 
 person.growUp();
@@ -934,7 +934,7 @@ const person = {
       console.log(`I am ${this.age} years old`);
       this.age++;
     }, 1000);
-  },
+  }
 };
 
 person.growUp();
@@ -1123,7 +1123,7 @@ We want to be able to make something that has data and manipulate that data in a
 There are a few ways to make raw objects.
 
 ```js
-const obj1 = {};
+const obj1 = {}; // object literal
 const obj2 = Object.create();
 
 //----------Functions-----------------
@@ -1255,11 +1255,15 @@ Four pillars of OOP:
 
 In computers we never make the things we represent; we make abstractions of those concepts. OOP can represent real-life objects like animals, cars, people. However, it can also represent a process or idea. Not everything needs to be real, but objects can create structure for it, nonetheless.
 
+**How would we abstract a card?**
+
 #### Encapsulation
 
 Do you want data to be relevant to the object? Do you want methods to manipulate that data?
 
 Encapsulation gives you a space that is separated from the outside environment (in loose terms).
+
+**A Deck contains Cards**
 
 #### Inheritance
 
