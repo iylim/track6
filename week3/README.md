@@ -783,7 +783,7 @@ const dog = {
   name: "Spots",
   whoAmI() {
     console.log(this);
-  }
+  },
 };
 
 dog.whoAmI();
@@ -881,7 +881,7 @@ const person = {
       console.log(`I am ${this.age} years old`);
       this.age++;
     }, 1000);
-  }
+  },
 };
 
 person.growUp();
@@ -902,7 +902,7 @@ const person = {
       // console.log(`I am ${this.age} years old`);
       // this.age++;
     }, 1000);
-  }
+  },
 };
 
 person.growUp();
@@ -934,7 +934,7 @@ const person = {
       console.log(`I am ${this.age} years old`);
       this.age++;
     }, 1000);
-  }
+  },
 };
 
 person.growUp();
@@ -1298,11 +1298,87 @@ More advanced, can be covered later.
 
 ## Asynchronous Programming
 
+We have covered earlier that JavaScript is a "single-threaded" language, which means that it only can run on process at a time. So, how do we get asynchronous code on a sequential execution.
+
+The event loop is how JavaScript can run any asynchronous code.
+
+This response from Stack Overflow ties the concepts well together: [Does async programming mean multi-threading?](https://stackoverflow.com/questions/8963209/does-async-programming-mean-multi-threading)
+
+> In an asynchronous environment, a single process thread runs all the time, but it may, for event-driven reasons (and that is the key), switch from one function to another. When an event happens, and when the currently running process hits a point at which it must wait for another event, the javascript core then scans its list of events and delivers the next one, in a (formally) indeterminate (but probably deterministic) order, to the event manager.
+
+JavaScript just looks like it is doing a ton of different things at once, but it is just switching quickly between tasks at idle moments in order to maximize usage of the processor.
+
 ### Callbacks
+
+> A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.
+
+```js
+function greeting(name) {
+  alert("Hello " + name);
+}
+
+// Synchronous callback
+function processUserInput(callback) {
+  var name = prompt("Please enter your name.");
+  callback(name);
+}
+
+processUserInput(greeting);
+```
 
 ### Promises
 
+> The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+
+![Promise Flow](https://process.filestackapi.com/cache=expiry:max/resize=width:1050/50VOVysgSY6RX2wEN6hL)
+
+[Promise Cheat Sheet](https://devhints.io/promise)
+
+Example Asynchronous Promise: Use the Fetch API
+
+```js
+/*
+Requests information from a source by 
+creating a Promise and waiting for said 
+resource to respond with an event.
+*/
+fetch("http://example.com/movies.json")
+  .then(function(response) {
+    return response.json(); // Chains to the next .then()
+  })
+  .then(function(myJson) {
+    console.log(JSON.stringify(myJson));
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+```
+
 ### Async/Await
+
+> The async function declaration defines an asynchronous function, which returns an AsyncFunction object. An asynchronous function is a function which operates asynchronously via the event loop, using an implicit Promise to return its result. But the syntax and structure of your code using async functions is much more like using standard synchronous functions.
+
+`async / await` is just a wrapper around the `Promise` type. Instead of having to write _chained_ functions, one after another. You can use `async / await` to make your code look more synchronous.
+
+`async / await` is not meant to replace `Promise` type interactions. It is a nice tool to involve synchronous code and improve readability in a given context.
+
+```js
+// Comparison between both with a weird example
+
+// ============ Promise =================
+function jump() {
+  getEnergyToJump().then(energy => {
+    execute(energy);
+  });
+}
+
+// ============ Async / Await ===========
+async function jump() {
+  // An async function call that is necessary in order to finish current execution.
+  const energy = await getEnergyToJump();
+  execute(energy);
+}
+```
 
 ## Error Handling
 
@@ -1311,13 +1387,13 @@ More advanced, can be covered later.
 When you have a block of code that could be prone to errors / bugs, you might want to wrap it in a `try {}` block. However, every `try` block should have a proceeding `catch() {}` block along with it
 
 ```js
-const getUserData (database) {
+const getUserData = database => {
   try {
-    const data = database.find('user');
+    const data = database.find("user");
   } catch (err) {
     console.log(err);
   }
-}
+};
 ```
 
 If the code within the `try` block fails:
@@ -1332,14 +1408,14 @@ The first thing that could resolve the error is the `Catch` block. In the code s
 Continuing our example from above, a better solution to handling an error we don't know what to do with is to `throw` the error.
 
 ```js
-const getUserData (database) {
+const getUserData = database => {
   try {
-    const data = database.find('user');
+    const data = database.find("user");
   } catch (err) {
     console.log(err);
     throw err; // DEV: Now I added a throw expression.
   }
-}
+};
 ```
 
 Now, my error handling allows whatever called `getUserData()` to deal with the error and logs the issue where it happened (better for debugging).
@@ -1351,16 +1427,16 @@ Now, my error handling allows whatever called `getUserData()` to deal with the e
 Continuing our example from above... If I had something that **MUST** be done after my `try` and `catch` blocks, it can be done in a `finally` block.
 
 ```js
-const getUserData (database) {
+const getUserData = database => {
   try {
-    const data = database.find('user');
+    const data = database.find("user");
   } catch (err) {
     console.log(err);
     throw err;
   } finally {
-    console.log('Database operations: Finished'); // DEV: log when done.
+    console.log("Database operations: Finished"); // DEV: log when done.
   }
-}
+};
 ```
 
 Now, in my `finally` block, I log when this function completes **NO MATTER WHAT**.
